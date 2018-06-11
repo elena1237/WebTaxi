@@ -1,1 +1,3 @@
-﻿
+﻿39498779|Milance|laptop|Milan|Masnikosa|M| 123456789|064567893|milance@gmail.com|Musterija
+375601|Aco|hahah|Acika|Dondo|Z| 2204996222222|678|jiasdf@gmail.com|Musterija
+46847177|Kaca|lala|Katarina|Huljic|Z| 12345|0987|kaca@gmail.com|Musterija

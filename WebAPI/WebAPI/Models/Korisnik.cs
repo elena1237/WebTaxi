@@ -8,6 +8,7 @@ namespace WebAPI.Models
 {
     public class Korisnik
     {
+        public int Id { get; set; }
         public  string KorisnickoIme { get; set; }
         public string Lozinka { get; set; }
         public string Ime { get; set; }
@@ -19,7 +20,40 @@ namespace WebAPI.Models
         public Uloga Uloga { get; set; }
 
 
+        public Korisnik(int i,string k, string l,string ime,string p,Pol po,string jmbg,string kont,string ema,Uloga ul)
+        {
+            this.Id = i;
+            this.KorisnickoIme = k;
+            this.Lozinka = l;
+            this.Ime = ime;
+            this.Prezime = p;
+            if (po.Equals("M"))
+            {
+                this.Pol = Pol.M;
+            }
+            else
+            {
+                this.Pol = Pol.Z;
+            }
+            this.JMBG = jmbg;
+            this.KontaktTelefon = kont;
+            this.Email = ema;
 
+            if (ul.Equals("MUSTERIJA"))
+            {
+                this.Uloga = Uloga.Musterija;
+            }
+            else if (ul.Equals("DISPECER"))
+            {
+                this.Uloga = Uloga.Dispecer;
+            }
+            else
+            {
+                this.Uloga = Uloga.Vozac;
+            }
 
+        }
     }
+
+    
 }
