@@ -10,10 +10,30 @@ namespace WebAPI.Controllers
 {
     public class LoginController : ApiController
     {
-
-        public void Post([FromBody]Korisnik korisnik)
+        
+        public bool Post([FromBody]Korisnik korisnik)
         {
+              foreach (Korisnik kor in Korisnici.korisnici.Values)
+              {
+                   if (kor.KorisnickoIme == korisnik.KorisnickoIme)
+                   {
+                        return true;
+                   }
 
+              }
+              foreach (Dispecer d in Dispeceri.dispeceri.Values)
+              {
+                  if (d.KorisnickoIme == korisnik.KorisnickoIme)
+                  {
+                       return true;
+                  }
+
+              }
+
+             return false;
+  
         }
+        
+
     }
 }

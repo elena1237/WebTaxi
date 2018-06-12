@@ -6,19 +6,11 @@ using static WebAPI.Models.Enums;
 
 namespace WebAPI.Models
 {
-    public class Vozac 
+    public class Vozac  : Korisnik
     {
-        public int Id { get; set; }
-        public string KorisnickoIme { get; set; }
-        public string Lozinka { get; set; }
-        public string Ime { get; set; }
-        public string Prezime { get; set; }
-        public Pol Pol { get; set; }
-        public string JMBG { get; set; }
-        public string KontaktTelefon { get; set; }
-        public string Email { get; set; }
-        public Uloga Uloga { get; set; }
+        public Vozac() { }
         public Lokacija Lokacija { get; set; }
         public Automobil Automobil { get; set; }
+
     }
 }

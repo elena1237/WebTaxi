@@ -3,6 +3,7 @@
 <head>
     <title></title>
     <meta charset="utf-8" />
+    
     <script src="Scripts/jquery-1.10.2.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -33,6 +34,15 @@
                 data: JSON.stringify(korisnik),
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
+                success: function (data) {
+                    if (data) {
+                        alert('Uspjesno ulogovan korisnik');
+                        localStorage.setItem("logovan", korisnik.KorisnickoIme);
+                        $(location).attr('href', 'SinglePage.html');
+                    } else {
+                        alert('Neuspjesno logovanje jer nije registrovan.');
+                    }
+                },
             })
         });
 
@@ -58,8 +68,16 @@
             data: JSON.stringify(korisnik),
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
-                    })
-                });
+            success: function (data) {
+                if (data) {
+                    alert('Uspjesno registovan korisnik');
+                    $(location).attr('href', 'pocetna.html');
+                } else {
+                    alert('Vec je registrovan korisnik.');
+                } 
+            },
+            })
+            });
         });
 
 
@@ -72,11 +90,11 @@
 
     <table>
         <tr>
-            <td>Ime</td>
+            <td>Korisnicko Ime</td>
             <td><input id="korIme" type="text" name="KorisnickoIme" /></td>
         </tr>
         <tr>
-            <td>Pass</td>
+            <td>Lozinka</td>
             <td><input id="korPass" type="password" name="Lozinka" /></td>
         </tr>
     </table>

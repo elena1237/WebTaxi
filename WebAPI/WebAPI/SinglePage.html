@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+        #div1{
+            display:none;
+        } 
+        #div2
+        {
+            display:none;
+        }
+    </style>
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            let primljeno = localStorage.getItem("logovan");
+            $.ajax({
+                type: 'POST',
+                url: '/api/Start',
+                data: JSON.stringify(primljeno),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    if (data != null) {
+                        alert('Uspjesno slanje.');
+                        if (data.Uloga == 0) {
+                            $("#div2").show();
+                            $("#div1").hide();
+                        } else if (data.Uloga == 1) {
+                            $("#div1").show();
+                            $("#div2").hide();
+                        } else {
+
+                        }
+                    } else {
+                        alert('Neuspjesno slanje.');
+                    }
+                },
+            })
+        });
+
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <p>Div za korisnika</p>
+    </div>
+    <div id="div2">
+        <p>Div za dispecera</p>
+    </div>
+
+</body>
+</html>

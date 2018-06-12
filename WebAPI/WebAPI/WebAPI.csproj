@@ -161,12 +161,15 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Controllers\StartController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Adresa.cs" />
     <Compile Include="Models\Automobil.cs" />
+    <Compile Include="Models\Dispecer.cs" />
+    <Compile Include="Models\Dispeceri.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Komentar.cs" />
     <Compile Include="Models\Korisnici.cs" />
@@ -177,6 +180,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Dispeceri.txt" />
     <Content Include="App_Data\Korisnici.txt" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
@@ -211,6 +215,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="SinglePage.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
