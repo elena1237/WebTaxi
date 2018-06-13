@@ -11,6 +11,7 @@
         $(document).ready(function () {
 
             let primljeno = localStorage.getItem("logovan");
+            let dataP;
             $.ajax({
                 type: 'POST',
                 url: '/api/Start',
@@ -18,14 +19,17 @@
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 success: function (data) {
+                    dataP = data;
                     if (data != null) {
                         alert('Uspjesno slanje.');
                         if (data.Uloga == 0) {
-                            $("#div2").show();
-                            $("#div1").hide();
+                            $("#PrikazDispecer").hide();
+                            $("#IzmjenaKorisnik").hide();
+                            $("#divKorisnik").hide();
                         } else if (data.Uloga == 1) {
-                            $("#div1").show();
-                            $("#div2").hide();
+                            $("#divKorisnik").show();
+                            $("#IzmjenaKorisnik").hide();
+                            $("#PrikazDispecer").hide();
                         } else {
 
                         }
@@ -34,22 +38,100 @@
                     }
                 },
             })
-        });
 
+
+
+
+
+            $("#prikaziKorisnik").click(function () {
+                $("#IzmjenaKorisnik").hide();
+                $("#PrikazDispecer").hide();
+                $("#PrikazKorisnik").show();
+                
+                let tableofData = "<table border='1'>";
+                    tableofData += `<tr><td>Id</td><td>${dataP.Id}</td></tr>`;
+                    tableofData += `<tr><td>Korisnicko ime</td><td>${dataP.KorisnickoIme}</td></tr>`;
+                    tableofData += `<tr><td>Lozinka</td><td>${dataP.Lozinka}</td></tr>`;
+                    tableofData += `<tr><td>Ime</td><td>${dataP.Ime}</td></tr>`;
+                    tableofData += `<tr><td>Prezime</td><td>${dataP.Prezime}</td></tr>`;
+                    tableofData += `<tr><td>JMBG</td><td>${dataP.JMBG}</td></tr>`;
+                    tableofData += `<tr><td>Kontakt telefon</td><td>${dataP.KontaktTelefon}</td></tr>`;
+                    tableofData += `<tr><td>Email</td><td>${dataP.Email}</td></tr>`;
+                    tableofData += "</table>";
+                    $("#PrikazKorisnik").html(tableofData);
+                        
+                });
+
+
+            $("#izmjeniKorisnik").click(function () {
+                $("#IzmjenaKorisnik").show();
+                $("#PrikazKorisnik").hide();
+                $("#PrikazDispecer").hide();
+
+                let tableofData = "<table border='1'>";
+                tableofData += "<tr><td>Korisnicko ime</td><td><input id=\"korImeReg\" type=\"text\" name=\"KorisnickoIme\" value=\"" + dataP.KorisnickoIme + "\"/></td></tr>";
+                tableofData += "<tr><td>Lozinka</td><td><input id=\"korPassReg\" type=\"password\" name=\"Lozinka\" value=\"" + dataP.Lozinka + "\"/></td></tr>";
+                tableofData += "<tr><td>Ime</td><td><input id=\"ime\" type=\"text\" name=\"Ime\" value=\"" + dataP.Ime + "\"/></td></tr>";
+                tableofData += "<tr><td>Prezime</td><td><input id=\"prezime\" type=\"text\" name=\"Prezime\" value=\"" + dataP.Prezime + "\"/></td></tr>";
+                tableofData += "<tr><td>JMBG</td><td><input id=\"jmbg\" type=\"text\" name=\"JMBG\" value=\"" + dataP.JMBG + "\"/></td></tr>";
+                tableofData += "<tr><td>Email</td><td><input id=\"email\" type=\"email\" name=\"Email\" value=\"" + dataP.Email + "\"/></td></tr>";
+                tableofData += "<tr><td>Kontakt telefon</td><td><input id=\"brTelefona\" type=\"text\" name=\"KontaktTelefon\" value=\"" + dataP.KontaktTelefon + "\"/></td></tr>";
+                tableofData += "</table>";
+                $("#IzmjenaShow").html(tableofData);
+
+            });
+
+
+            $("#potvrdiIzmjenu").click(function () {
+
+                let korisnik = {
+                    Id: dataP.Id,
+                    KorisnickoIme: `${$('#korImeReg').val()}`,
+                    Lozinka: `${$('#korPassReg').val()}`,
+                    Ime: `${$('#ime').val()}`,
+                    Prezime: `${$('#prezime').val()}`,
+                    Pol: dataP.Pol,
+                    JMBG: ` ${$('#jmbg').val()}`,
+                    Email: `${$('#email').val()}`,
+                    KontaktTelefon: `${$('#brTelefona').val()}`,
+                    Uloga: dataP.Uloga,
+                };
+                
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/Change',
+                    data: JSON.stringify(korisnik),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data) {
+                            alert('Uspjesno izmjenjen korisnik');
+                            localStorage.setItem("logovan", korisnik.KorisnickoIme);
+                            $(location).attr('href', 'HtmlPage1.html');
+                        } else {
+                            alert('Ne postoji korisnik kojeg zelite da mijenjate');
+                        }
+                    },
+                })
+            });
+        
+        });
     </script>
 
     <style>
-        #div1 {
+       
+        #divKorisnik {
             display: none;
         }
 
-        #div2 {
+        #PrikazDispecer {
             display: none;
         }
 
+       
         body {
             background-image: url("Taxi_Cars_Toys_Back_view_461304.jpg");
-            background-repeat: no-repeat;
+            background-repeat:  no-repeat;
             background-position: top;
             background-size: cover;
         }
@@ -63,12 +145,22 @@
             <h1>You are logged in</h1>
         </div>
     </div>
+    <div id="divKorisnik">
+        <p><b>Wecome user</b></p>
+        <button id="izmjeniKorisnik" type="button"><b>Izmjeni podatke</b></button>
+        <button id="prikaziKorisnik" type="button"><b>Prikazi podatke</b></button>
+        <div id="PrikazKorisnik"></div>
+        <div id="IzmjenaKorisnik">
+            <div id="IzmjenaShow">
 
-    <div id="div1">
-        <p> Div za korisnika </p>
+            </div>
+            <button id="potvrdiIzmjenu" type="button"><b>Izmjeni podatke</b></button>
+        </div>
     </div>
-    <div id="div2">
-        <p>Div za dispecera</p>
+
+
+    <div id="PrikazDispecer">
+        <h1>Div za dispecera</h1>
     </div>
 
 </body>

@@ -27,6 +27,7 @@ namespace WebAPI.Controllers
                     return false;
                 }
            }
+
            Korisnici.korisnici = new Dictionary<int, Korisnik>();
            SomeType s = new SomeType();
            korisnik.Id = s.GetHashCode();
@@ -35,8 +36,6 @@ namespace WebAPI.Controllers
            HttpContext.Current.Application["korisnici"] = Korisnici.korisnici;
            UpisTxt(korisnik);
            return true;
-            
-
             
         }
 
