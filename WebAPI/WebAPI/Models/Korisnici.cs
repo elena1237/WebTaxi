@@ -15,8 +15,7 @@ namespace WebAPI.Models
 
         public Korisnici(string path)
         {
-           
-            
+               
             FileStream stream = new FileStream(path, FileMode.Open);
             StreamReader sr = new StreamReader(stream);
             Enums.Pol pol;

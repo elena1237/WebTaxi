@@ -22,6 +22,7 @@ namespace WebAPI
 
             Korisnici users = new Korisnici(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Korisnici.txt");
             Dispeceri disp = new Dispeceri(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Dispeceri.txt");
+            
         }
     }
 }
