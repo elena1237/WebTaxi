@@ -9,10 +9,8 @@ namespace WebAPI.Models
     {
         public string Opis { get; set; }
         public DateTime DTObjave { get; set; }
-
         public Korisnik KorisnikKomentar { get; set; }
         public Voznja VoznjaKomentar { get; set; }
-
         public int Ocjena { get; set; }
 
     }

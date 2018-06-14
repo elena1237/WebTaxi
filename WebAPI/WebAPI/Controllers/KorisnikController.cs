@@ -21,10 +21,10 @@ namespace WebAPI.Controllers
                 {
                     if (kor.Id == id)
                     {
-                        Korisnici.korisnici.Remove(kor.Id);
-                        Korisnici.korisnici.Add(korisnik.Id, korisnik);
-                        UpisIzmjenaTxt(korisnik);
-                        return true;
+                         Korisnici.korisnici.Remove(kor.Id);
+                         Korisnici.korisnici.Add(korisnik.Id, korisnik);
+                         UpisIzmjenaTxt(korisnik);
+                         return true;
                     }
                 }
                 return false;

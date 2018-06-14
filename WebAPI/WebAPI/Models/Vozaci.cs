@@ -49,7 +49,7 @@ namespace WebAPI.Models
                 {
                     uloga = Enums.Uloga.Vozac;
                 }
-                if (tokens[10].Equals("Kombi"))
+                if (tokens[21].Equals("Kombi"))
                 {
                     tip = Enums.TipAutomobila.Kombi;
                 }
@@ -57,9 +57,9 @@ namespace WebAPI.Models
                 {
                     tip = Enums.TipAutomobila.Putnicki;
                 }
-                pomAdresa = new Adresa(tokens[13], tokens[14], tokens[15]);
+                pomAdresa = new Adresa(Int32.Parse(tokens[13]),tokens[14], tokens[15], tokens[16]);
                 pomLok = new Lokacija(Int32.Parse(tokens[10]),Double.Parse(tokens[11]),Double.Parse(tokens[12]),pomAdresa);
-                pomAuto = new Automobil(Int32.Parse(tokens[16]), tokens[17], tokens[18], Int32.Parse(tokens[19]), tip);
+                pomAuto = new Automobil(Int32.Parse(tokens[17]), tokens[18], tokens[19], Int32.Parse(tokens[20]), tip);
                 Vozac v = new Vozac(Int32.Parse(tokens[0]), tokens[1], tokens[2], tokens[3], tokens[4], pol, tokens[6], tokens[7], tokens[8], uloga,pomLok,pomAuto);
                 vozaci.Add(v.Id, v);
             }
