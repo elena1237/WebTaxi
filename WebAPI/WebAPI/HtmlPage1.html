@@ -136,8 +136,8 @@
                 };
                 
                 $.ajax({
-                    type: 'POST',
-                    url: '/api/Change',
+                    type: 'PUT',
+                    url: '/api/Korisnik/' + dataP.Id,
                     data: JSON.stringify(korisnik),
                     contentType: 'application/json; charset=utf-8',
                     dataType: 'json',
@@ -170,8 +170,8 @@
                 };
 
                 $.ajax({
-                    type: 'POST',
-                    url: '/api/Change',
+                    type: 'PUT',
+                    url: '/api/Korisnik/' + dataP.Id,
                     data: JSON.stringify(korisnik),
                     contentType: 'application/json; charset=utf-8',
                     dataType: 'json',
