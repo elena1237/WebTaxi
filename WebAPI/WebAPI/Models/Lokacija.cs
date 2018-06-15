@@ -10,7 +10,7 @@ namespace WebAPI.Models
         public int IdLok { get; set; }
         public double X { get; set; }
         public double Y { get; set; }
-        public Adresa Adresa { get; set; }
+        public virtual Adresa Adresa { get; set; }
 
         public Lokacija() { }
         public Lokacija(int id,double x,double y,Adresa adresa)

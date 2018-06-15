@@ -53,16 +53,16 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: '/api/Korisnik',
+                    url: '/api/Musterija',
                     data: JSON.stringify(korisnik),
                     contentType: 'application/json; charset=utf-8',
                     dataType: 'json',
                     success: function (data) {
                         if (data) {
-                            alert('Uspjesno registovan korisnik');
+                            alert('Uspjesno registovana musterija');
                             $(location).attr('href', 'pocetna.html');
                         } else {
-                            alert('Vec je registrovan korisnik.');
+                            alert('Vec je registrovan korisnik sa tim korisnickim imenom.');
                         }
                     },
                 })
@@ -102,7 +102,7 @@
             <h1><b>Welcome to Yellow TAXI</b></h1>
      </div>
      </div>
-
+     
 
         <h2><b>Login</b></h2>
 

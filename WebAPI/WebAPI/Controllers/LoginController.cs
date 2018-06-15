@@ -13,9 +13,9 @@ namespace WebAPI.Controllers
         
         public bool Post([FromBody]Korisnik korisnik)
         {
-              foreach (Korisnik kor in Korisnici.korisnici.Values)
+              foreach (Musterija kor in Musterije.musterije.Values)
               {
-                   if (kor.KorisnickoIme == korisnik.KorisnickoIme)
+                   if (kor.KorisnickoIme == korisnik.KorisnickoIme || kor.Lozinka==korisnik.Lozinka)
                    {
                         return true;
                    }
@@ -23,14 +23,23 @@ namespace WebAPI.Controllers
               }
               foreach (Dispecer d in Dispeceri.dispeceri.Values)
               {
-                  if (d.KorisnickoIme == korisnik.KorisnickoIme)
+                  if (d.KorisnickoIme == korisnik.KorisnickoIme || d.Lozinka == korisnik.Lozinka)
                   {
                        return true;
                   }
 
               }
+              foreach (Vozac v in Vozaci.vozaci.Values)
+              {
+                  if (v.KorisnickoIme == korisnik.KorisnickoIme || v.Lozinka == korisnik.Lozinka)
+                  {
+                      return true;
+                  }
+              }
 
-             return false;
+
+
+            return false;
   
         }
         

@@ -12,9 +12,8 @@ namespace WebAPI.Controllers
     {
         public Korisnik Post([FromBody]string vrednost)
         {
-            
-
-            foreach (var k in Korisnici.korisnici.Values)
+ 
+            foreach (var k in Musterije.musterije.Values)
             {
                 if(k.KorisnickoIme==vrednost)
                 {
@@ -27,6 +26,14 @@ namespace WebAPI.Controllers
                 if (d.KorisnickoIme == vrednost)
                 {
                     return d;
+                }
+            }
+
+            foreach (var v in Vozaci.vozaci.Values)
+            {
+                if (v.KorisnickoIme == vrednost)
+                {
+                    return v;
                 }
             }
 

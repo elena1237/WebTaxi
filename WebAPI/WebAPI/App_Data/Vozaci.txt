@@ -1,2 +1,1 @@
-﻿28283586|Mare|lala|Marinko|Rokvic|M| 1233455|0648903232|marinko@gmail.com|Vozac|90|23|34|89|Majke Jevrosime 4|Banjaluka|78000|28283586|1999|123-M-987|100|Putnicki
-14701405|Ivica|hehe|Ivo|Ivic|M| 345345435|06423532|ivo@gmail.com|Vozac|56|34|4|345|Koste Racina 45|Novi Sad|21000|14701405|2324|234-I-243|400|Kombi
+12408161|Ljubomir|ljubo|Ljubo|Nenadovic|M| 10059952345|0642354674|ljubo@gmail.com|Vozac|23|34|5|32|Majke Knezopoljke 32|Novi Sad|21000|12408161|1999|345-M-435|12|Kombi

@@ -22,6 +22,21 @@ namespace WebAPI.Controllers
                     return false;
                 }
             }
+            foreach (Musterija kor in Musterije.musterije.Values)
+            {
+                if (kor.KorisnickoIme == korisnik.KorisnickoIme)
+                {
+                    return false;
+                }
+            }
+            
+            foreach (Dispecer kor in Dispeceri.dispeceri.Values)
+            {
+                if (kor.KorisnickoIme == korisnik.KorisnickoIme)
+                {
+                    return false;
+                }
+            }
 
             Vozaci.vozaci = new Dictionary<int, Vozac>();  ////////////////
             SomeType s = new SomeType();
@@ -39,7 +54,7 @@ namespace WebAPI.Controllers
             FileStream stream = new FileStream(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Vozaci.txt", FileMode.Append);
             using (StreamWriter tw = new StreamWriter(stream))
             {
-                string upis = k.Id.ToString() + '|' + k.KorisnickoIme + '|' + k.Lozinka + '|' + k.Ime + '|' + k.Prezime + '|' + k.Pol + '|' + k.JMBG + '|' + k.KontaktTelefon + '|' + k.Email + '|' + k.Uloga + '|' + k.Lokacija.IdLok.ToString() + '|' + k.Lokacija.X.ToString() + '|' + k.Lokacija.Y.ToString() + '|' + k.Lokacija.Adresa.IdAdr.ToString() + '|' + k.Lokacija.Adresa.UlicaIBroj + '|' + k.Lokacija.Adresa.NaseljenoMjesto + '|' + k.Lokacija.Adresa.PozivniBroj + '|' + k.Automobil.IdVozaca.ToString() + '|' + k.Automobil.Godiste + '|' + k.Automobil.Registracija + '|' + k.Automobil.BrojVozila.ToString() + '|' + k.Automobil.TipAuta;
+                string upis = k.Id.ToString() + '|' + k.KorisnickoIme + '|' + k.Lozinka + '|' + k.Ime + '|' + k.Prezime + '|' + k.Pol + '|' + k.JMBG + '|' + k.KontaktTelefon + '|' + k.Email + '|' + k.Uloga + '|' + k.Lokacija.IdLok.ToString() + '|' + k.Lokacija.X.ToString() + '|' + k.Lokacija.Y.ToString() + '|' + k.Lokacija.Adresa.IdAdr.ToString() + '|' + k.Lokacija.Adresa.UlicaIBroj + '|' + k.Lokacija.Adresa.NaseljenoMjesto + '|' + k.Lokacija.Adresa.PozivniBroj + '|' + k.Automobil.IdVozaca.ToString() + '|' + k.Automobil.Godiste + '|' + k.Automobil.Registracija + '|' + k.Automobil.BrojVozila.ToString() + '|' + k.Automobil.TipAuta + '\n';
                 tw.WriteLine(upis);
             }
             stream.Close();
@@ -57,5 +72,41 @@ namespace WebAPI.Controllers
         {
             return Int32.MaxValue.GetHashCode();
         }
+
+
+
+        
+        // PUT api/vozac/5
+        public bool Put(int id, [FromBody]Vozac korisnik)
+        {
+                foreach (Vozac kor in Vozaci.vozaci.Values)
+                {
+                    if (kor.Id == id)
+                    {
+                        Vozaci.vozaci.Remove(kor.Id);
+                        Vozaci.vozaci.Add(korisnik.Id, korisnik);
+                        UpisIzmjenaTxt(korisnik);
+                        return true;
+                    }
+                }
+            return false;
+        }
+
+        private void UpisIzmjenaTxt(Vozac k)
+        {
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Vozaci.txt");
+            string allString = "";
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (lines[i].Contains(k.Id.ToString()))
+                {
+                    allString += k.Id.ToString() + '|' + k.KorisnickoIme + '|' + k.Lozinka + '|' + k.Ime + '|' + k.Prezime + '|' + k.Pol + '|' + k.JMBG + '|' + k.KontaktTelefon + '|' + k.Email + '|' + k.Uloga + '|' + k.Lokacija.IdLok.ToString() + '|' + k.Lokacija.X.ToString() + '|' + k.Lokacija.Y.ToString() + '|' + k.Lokacija.Adresa.IdAdr.ToString() + '|' + k.Lokacija.Adresa.UlicaIBroj + '|' + k.Lokacija.Adresa.NaseljenoMjesto + '|' + k.Lokacija.Adresa.PozivniBroj + '|' + k.Automobil.IdVozaca.ToString() + '|' + k.Automobil.Godiste + '|' + k.Automobil.Registracija + '|' + k.Automobil.BrojVozila.ToString() + '|' + k.Automobil.TipAuta;
+                    lines[i] = allString;
+                }
+            }
+            System.IO.File.WriteAllLines(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Vozaci.txt", lines);
+
+        }
+
     }
 }

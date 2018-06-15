@@ -16,10 +16,10 @@ namespace WebAPI.Models
 
         public Adresa(int idAdr,string ulicabroj,string naseljenomesto,string pozivnibroj)
         {
-            IdAdr = idAdr;
-            UlicaIBroj = ulicabroj;
-            NaseljenoMjesto = naseljenomesto;
-            PozivniBroj = pozivnibroj;
+            this.IdAdr = idAdr;
+            this.UlicaIBroj = ulicabroj;
+            this.NaseljenoMjesto = naseljenomesto;
+            this.PozivniBroj = pozivnibroj;
         }
     }
 }
