@@ -23,6 +23,7 @@ namespace WebAPI
             Musterije users = new Musterije(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Musterije.txt");
             Dispeceri disp = new Dispeceri(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Dispeceri.txt");
             Vozaci drivers = new Vozaci(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Vozaci.txt");
+            Voznje rides = new Voznje(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Voznje.txt");
 
         }
     }

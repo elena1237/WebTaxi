@@ -47,7 +47,7 @@ namespace WebAPI.Controllers
 
 
 
-        // POST api/musterija
+        // POST api/post
         public bool Post([FromBody]Musterija korisnik)
         {
 
@@ -107,8 +107,9 @@ namespace WebAPI.Controllers
         {
             return Int32.MaxValue.GetHashCode();
         }
+
+
     }
 
 
-    
 }

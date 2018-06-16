@@ -21,6 +21,14 @@ namespace WebAPI.Models
             this.Registracija = registracija;
             this.BrojVozila = brvozila;
             this.TipAuta = tip;
+            if (tip.Equals("Kombi"))
+            {
+                this.TipAuta = TipAutomobila.Kombi;
+            }
+            else
+            {
+                this.TipAuta = TipAutomobila.Putnicki;
+            }
         }
     }
 }

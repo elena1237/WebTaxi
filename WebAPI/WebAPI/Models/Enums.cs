@@ -11,6 +11,6 @@ namespace WebAPI.Models
       public enum Pol { M, Z}
       public enum Uloga { Dispecer, Musterija, Vozac}
       public enum TipAutomobila { Putnicki, Kombi}
-      public enum StatusVoznje { Kreirana, Formirana, Obradjena, Prihvacena, Otkazana, Neuspjesna, Uspjesna}
+      public enum StatusVoznje { Kreirana, Formirana, Obradjena, Prihvacena, Otkazana, Neuspjesna, Uspjesna, Utoku}
     }
 }

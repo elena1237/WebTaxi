@@ -12,7 +12,7 @@ namespace WebAPI.Models
         public double Y { get; set; }
         public virtual Adresa Adresa { get; set; }
 
-        public Lokacija() { }
+        public Lokacija() { Adresa = new Adresa(); }
         public Lokacija(int id,double x,double y,Adresa adresa)
         {
             this.IdLok = id;
