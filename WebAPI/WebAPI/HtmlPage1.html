@@ -649,12 +649,12 @@
                             } else  {
                                 tableOfProducts += '<td>Utoku</td>';
                             } 
-                            tableOfProducts += `<td>${data[voznja].Komentar.Opis}</td><td>${data[voznja].Komentar.Ocjena}</td><td>${data[voznja].Komentar.DTObjave}</td><td><button id="izmjeniVoznja" type="button" value=${data[voznja].IdVoznje}><b>Izmjeni voznju</b></button><td><button id="otkaziVoznja" type="button" value=${data[voznja].IdVoznje}><b>Otkazi voznju</b></button></td></td></tr>`;
-                            //if (data[voznja].StatusVoznje == 4) {
-                            //    tableOfProducts += '<td><button id="otkaziVoznja" type="button" value = "disable"><b>Otkazi voznju</b></button></td></tr>';
-                            //} else {  
-                            //    tableOfProducts += '<td><button id="otkaziVoznja" type="button" value=${data[voznja].IdVoznje}><b>Otkazi voznju</b></button></td></tr>';
-                            //}
+                            tableOfProducts += `<td>${data[voznja].Komentar.Opis}</td><td>${data[voznja].Komentar.Ocjena}</td><td>${data[voznja].Komentar.DTObjave}</td><td><button id="izmjeniVoznja" type="button" value=${data[voznja].IdVoznje}><b>Izmjeni voznju</b></button></td>`;
+                            if (data[voznja].StatusVoznje == 4) {
+                                tableOfProducts += '<td><button id="otkaziVoznja" type="button" value ="disable" disabled="disabled"><b>Otkazi voznju</b></button></td></tr>';
+                            } else {  
+                                tableOfProducts += '<td><button id="otkaziVoznja" type="button" value=${data[voznja].IdVoznje}><b>Otkazi voznju</b></button></td></tr>';
+                            }
                         }
                     }
                     tableOfProducts += "</table>";

@@ -27,7 +27,7 @@ namespace WebAPI.Controllers
                 SomeType s = new SomeType();
                 voznja.IdVoznje = s.GetHashCode();
                 voznja.DTPorudzbine = DateTime.Now;
-                if(voznja.MusterijaVoznja!=null && voznja.StatusVoznje!= Enums.StatusVoznje.Otkazana)
+                if(voznja.MusterijaVoznja!=null)
                 {
                     voznja.StatusVoznje = Enums.StatusVoznje.Kreirana;
                 }else if(voznja.DispecerVoznja!=null)
@@ -123,7 +123,7 @@ namespace WebAPI.Controllers
                     korisnik.TipAutaVoznje = kor.TipAutaVoznje;
                     korisnik.IdVoznje = kor.IdVoznje;
                     korisnik.DTPorudzbine = DateTime.Now;
-                    if (korisnik.MusterijaVoznja != null)
+                    if (korisnik.MusterijaVoznja != null && kor.StatusVoznje != Enums.StatusVoznje.Otkazana)
                     {
                         korisnik.StatusVoznje = Enums.StatusVoznje.Kreirana;
                     }
@@ -131,11 +131,22 @@ namespace WebAPI.Controllers
                     {
                         korisnik.StatusVoznje = Enums.StatusVoznje.Formirana;
                     }
-                    else
+                    else if(korisnik.VozacVoznja!=null)
                     {
                         korisnik.StatusVoznje = Enums.StatusVoznje.Prihvacena;
+                    } else
+                    {
+                        korisnik.StatusVoznje = kor.StatusVoznje;
                     }
-                    korisnik.Komentar = new Komentar();
+
+                    if (kor.Komentar != null)
+                    {
+                        korisnik.Komentar = new Komentar();
+                        korisnik.Komentar = kor.Komentar;
+                    } else
+                    {
+                        korisnik.Komentar = new Komentar();
+                    }
                     korisnik.Odrediste = new Lokacija();
                     Voznje.voznje.Remove(kor.IdVoznje);
                     Voznje.voznje.Add(korisnik.IdVoznje, korisnik);
