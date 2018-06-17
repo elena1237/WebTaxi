@@ -50,7 +50,7 @@ namespace WebAPI.Models
                 {
                     status = Enums.StatusVoznje.Kreirana;
                 }
-                else if (tokens[66].Equals("Neuspjesna"))
+                else if (tokens[26].Equals("Neuspjesna"))
                 {
                     status = Enums.StatusVoznje.Neuspjesna;
                 }

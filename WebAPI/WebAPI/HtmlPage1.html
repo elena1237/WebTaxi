@@ -28,7 +28,7 @@
                             $("#divVozac").hide();
                             $("#IzmjenaKorisnik1").hide();
                             $("#DodavanjeVozaca").hide();
-                            
+
                         } else if (data.Uloga == 1) {
                             $("#divKorisnik").show();
                             $("#DodavanjeVoznjeMusterija").hide();
@@ -36,15 +36,17 @@
                             $("#divVozac").hide();
                             $("#IzmjenaKorisnik").hide();
                             $("#PrikaziVoznjeMusterije").hide();
-                            
-                            
-                           
+                            $("#IzmjenaVoznja").hide();
+                            $("#KomentarVoznja").hide();
+
+
+
                         } else {
                             $("#divVozac").show();
                             $("#divKorisnik").hide();
                             $("#divDispecer").hide();
                             $("#IzmjenaKorisnik2").hide();
-                            
+
                         }
                     } else {
                         alert('Neuspjesno slanje.');
@@ -58,20 +60,22 @@
                 $("#DodavanjeVoznjeMusterija").hide();
                 $("#IzmjenaKorisnik").hide();
                 $("#PrikazKorisnik").show();
-               
-                
+                $("#IzmjenaVoznja").hide();
+                $("#KomentarVoznja").hide();
+
+
                 let tableofData = "<table border='1'>";
-                    tableofData += `<tr><td>Id</td><td>${dataP.Id}</td></tr>`;
-                    tableofData += `<tr><td>Korisnicko ime</td><td>${dataP.KorisnickoIme}</td></tr>`;
-                    tableofData += `<tr><td>Lozinka</td><td>${dataP.Lozinka}</td></tr>`;
-                    tableofData += `<tr><td>Ime</td><td>${dataP.Ime}</td></tr>`;
-                    tableofData += `<tr><td>Prezime</td><td>${dataP.Prezime}</td></tr>`;
-                    tableofData += `<tr><td>JMBG</td><td>${dataP.JMBG}</td></tr>`;
-                    tableofData += `<tr><td>Kontakt telefon</td><td>${dataP.KontaktTelefon}</td></tr>`;
-                    tableofData += `<tr><td>Email</td><td>${dataP.Email}</td></tr>`;
-                    tableofData += "</table>";
-                    $("#PrikazKorisnik").html(tableofData);
-                        
+                tableofData += `<tr><td>Id</td><td>${dataP.Id}</td></tr>`;
+                tableofData += `<tr><td>Korisnicko ime</td><td>${dataP.KorisnickoIme}</td></tr>`;
+                tableofData += `<tr><td>Lozinka</td><td>${dataP.Lozinka}</td></tr>`;
+                tableofData += `<tr><td>Ime</td><td>${dataP.Ime}</td></tr>`;
+                tableofData += `<tr><td>Prezime</td><td>${dataP.Prezime}</td></tr>`;
+                tableofData += `<tr><td>JMBG</td><td>${dataP.JMBG}</td></tr>`;
+                tableofData += `<tr><td>Kontakt telefon</td><td>${dataP.KontaktTelefon}</td></tr>`;
+                tableofData += `<tr><td>Email</td><td>${dataP.Email}</td></tr>`;
+                tableofData += "</table>";
+                $("#PrikazKorisnik").html(tableofData);
+
             });
 
             $("#prikaziKorisnik1").click(function () {
@@ -120,8 +124,7 @@
                 tableofData += `<tr><td>Broj vozila</td><td>${dataP.Automobil.BrojVozila}</td></tr>`;
                 if (dataP.Automobil.TipAuta == 1) {
                     tableofData += `<tr><td>Tip automobila</td><td>Kombi</td></tr>`;
-                } else
-                {
+                } else {
                     tableofData += `<tr><td>Tip automobila</td><td>Putnicki</td></tr>`;
                 }
                 tableofData += "</table>";
@@ -135,7 +138,11 @@
                 $("#DodavanjeVoznjeMusterija").hide();
                 $("#IzmjenaKorisnik").show();
                 $("#PrikazKorisnik").hide();
-               
+                $("#IzmjenaVoznja").hide();
+                $("#KomentarVoznja").hide();
+
+
+
                 let tableofData = "<table border='1'>";
                 tableofData += "<tr><td>Korisnicko ime</td><td><input id=\"korImeReg\" type=\"text\" name=\"KorisnickoIme\" value=\"" + dataP.KorisnickoIme + "\"/></td></tr>";
                 tableofData += "<tr><td>Lozinka</td><td><input id=\"korPassReg\" type=\"password\" name=\"Lozinka\" value=\"" + dataP.Lozinka + "\"/></td></tr>";
@@ -184,8 +191,8 @@
                 tableofData += "<tr><td>X </td><td><input id=\"x2\" type=\"text\" name=\"X\" value=\"" + dataP.Lokacija.X + "\"/></td></tr>";
                 tableofData += "<tr><td>Y </td><td><input id=\"y2\" type=\"text\" name=\"Y\" value=\"" + dataP.Lokacija.Y + "\"/></td></tr>";
                 tableofData += "<tr><td>Id adrese</td><td><input id=\"idadrese2\" type=\"text\" name=\"IdAdr\" value=\"" + dataP.Lokacija.Adresa.IdAdr + "\"/></td></tr>";
-                tableofData += "<tr><td>Ulica i broj</td><td><input id=\"ulicaibroj2\" type=\"text\" name=\"UlicaIBroj\" value=\"" + dataP.Lokacija.Adresa.UlicaIBroj  + "\"/></td></tr>";
-                tableofData += "<tr><td>Naseljeno mjesto</td><td><input id=\"naseljenomjesto2\" type=\"text\" name=\"NaseljenoMjesto\" value=\"" + dataP.Lokacija.Adresa.NaseljenoMjesto  + "\"/></td></tr>";
+                tableofData += "<tr><td>Ulica i broj</td><td><input id=\"ulicaibroj2\" type=\"text\" name=\"UlicaIBroj\" value=\"" + dataP.Lokacija.Adresa.UlicaIBroj + "\"/></td></tr>";
+                tableofData += "<tr><td>Naseljeno mjesto</td><td><input id=\"naseljenomjesto2\" type=\"text\" name=\"NaseljenoMjesto\" value=\"" + dataP.Lokacija.Adresa.NaseljenoMjesto + "\"/></td></tr>";
                 tableofData += "<tr><td>Pozivni broj</td><td><input id=\"pozivnibroj2\" type=\"text\" name=\"PozivniBroj\" value=\"" + dataP.Lokacija.Adresa.PozivniBroj + "\"/></td></tr>";
                 tableofData += "<tr><td>Godiste automobila</td><td><input id=\"godiste2\" type=\"text\" name=\"Godiste\" value=\"" + dataP.Automobil.Godiste + "\"/></td></tr>";
                 tableofData += "<tr><td>Registracija</td><td><input id=\"registracija2\" type=\"text\" name=\"Registracija\" value=\"" + dataP.Automobil.Registracija + "\"/></td></tr>";
@@ -194,6 +201,70 @@
                 $("#IzmjenaShow2").html(tableofData);
 
             });
+
+
+
+
+            $(document).on('click', '#izmjeniVoznja', function () {
+                let fired_button = $(this).val();
+                localStorage.setItem("voznjaIzmjena", fired_button);
+                $("#IzmjenaKorisnik").hide();
+                $("#PrikazKorisnik").hide();
+                $("#IzmjenaVoznja").show();
+                $("#PrikaziVoznjeMusterije").show();
+                $("#DodavanjeVoznjeMusterija").hide();
+                
+
+                $.get("/api/Voznja", function (data, status) {
+                    let id= localStorage.getItem("voznjaIzmjena");
+                    let tableofData2 = "<table border='1'>";
+                    for (voznja in data) {
+                        if (data[voznja].IdVoznje == id) {
+                            tableofData2 += "<tr><td>Id adrese dolaska</td><td><input id=\"idadr1\" type=\"text\" name=\"IdAdr\" value=\"" + data[voznja].Dolazak.Adresa.IdAdr + "\"/></td></tr>" +
+                                "<tr><td>X lokacije dolaska</td><td><input id=\"x1\" type=\"text\" name=\"X\" value=\"" + data[voznja].Dolazak.X + "\"/></td></tr>" +
+                                "<tr><td>Y lokacije dolaska</td><td><input id=\"y1\" type=\"text\" name=\"Y\" value=\"" + data[voznja].Dolazak.Y + "\"/></td></tr>" +
+                                "<tr><td>Ulica i broj lokacije dolaska</td><td><input id=\"ulicaibroj1\" type=\"text\" name=\"UlicaIBroj\" value=\"" + data[voznja].Dolazak.Adresa.UlicaIBroj + "\"/></td></tr>" +
+                                "<tr><td>Naseljeno mjesto lokacije dolaska</td><td><input id=\"naseljenomjesto1\" type=\"text\" name=\"NaseljenoMjesto\" value=\"" + data[voznja].Dolazak.Adresa.NaseljenoMjesto + "\"/></td></tr>" +
+                                "<tr><td>Pozivni broj lokacije dolaska</td><td><input id=\"pozivnibroj1\" type=\"text\" name=\"PozivniBroj\" value=\"" + data[voznja].Dolazak.Adresa.PozivniBroj + "\"/></td></tr>";
+                        }
+                    }
+                    tableofData2 += "</table>";
+                    $("#IzmjenaShow3").html(tableofData2);
+                });
+            });
+
+
+
+
+            $(document).on('click', '#otkaziVoznja', function () {
+                let fired_button1 = $(this).val();
+                localStorage.setItem("voznjaOtkaz", fired_button1);
+                $("#IzmjenaKorisnik").hide();
+                $("#PrikazKorisnik").hide();
+                $("#IzmjenaVoznja").hide();
+                $("#PrikaziVoznjeMusterije").hide();
+                $("#DodavanjeVoznjeMusterija").hide();
+                $("#KomentarVoznja").show();
+                
+
+
+                $.get("/api/Voznja", function (data, status) {
+                    let id = localStorage.getItem("voznjaOtkaz");
+                    let tableofData3 = "<table border='1'>";
+                    for (voznja in data) {
+                        if (data[voznja].IdVoznje == id) {
+                            tableofData3 += "<tr><td>Opis</td><td><input id=\"opis\" type=\"text\" name=\"Opis\" value=\"" + data[voznja].Komentar.Opis + "\"/></td></tr>" +
+                                "<tr><td>Datum objave</td><td><input id=\"datum\" type=\"datetime\" name=\"DTObjave\" value=\"" + data[voznja].Komentar.DTObjave + "\"/></td></tr>" +
+                                "<tr><td>Ocjena</td><td><input id=\"ocjena\" min=\"0\" max=\"5\" type=\"number\" name=\"Ocjena\" value=\"" + data[voznja].Komentar.Ocjena + "\"/></td></tr>";      
+                        }
+                    }
+                    tableofData3 += "</table>";
+                    $("#IzmjenaShow4").html(tableofData3);
+                });
+            });
+
+
+
 
 
             $("#potvrdiIzmjenu").click(function () {
@@ -326,6 +397,99 @@
             });
 
 
+
+            $("#potvrdiIzmjenuVoznja").click(function () {
+                let id1 = localStorage.getItem("voznjaIzmjena");
+                let adresaDolazak = {
+                    IdAdr: `${$('#idadr1').val()}`,
+                    UlicaIBroj: `${$('#ulicaibroj1').val()}`,
+                    NaseljenoMjesto: `${$('#naseljenomjesto1').val()}`,
+                    PozivniBroj: `${$('#pozivnibroj1').val()}`,
+                };
+
+                let lokacijaDolazak = {
+                    IdLok: `${$('#idlok1').val()}`,
+                    X: `${$('#x1').val()}`,
+                    Y: `${$('#y1').val()}`,
+                    Adresa: adresaDolazak,
+                };
+
+
+                let voznja = {
+                    Dolazak: lokacijaDolazak,
+                    //TipAutaVoznje: `${$('#tipau').val()}`,
+                    MusterijaVoznja: dataP.KorisnickoIme,
+                    VozacVoznja: null,
+                    Iznos: 0,
+                    DispecerVoznja: null,
+                };
+
+                
+                $.ajax({
+                    type: 'PUT',
+                    url: '/api/Voznja/' + id1,
+                    data: JSON.stringify(voznja),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data) {
+                            alert('Uspjesno izmjenjena voznja');
+                            localStorage.setItem("voznjaIzmjena", id1);
+                            $(location).attr('href', 'HtmlPage1.html');
+                        } else {
+                            alert('Ne postoji voznja koju zelite da mijenjate');
+                        }
+                    },
+                })
+
+            });
+
+
+
+
+
+
+            $("#potvrdiKomentar").click(function () {                       //za musteriju
+                let id2 = localStorage.getItem("voznjaOtkaz"); 
+                let komentarVoznja = {
+                    Opis: `${$('#opis').val()}`,
+                    DTObjave: `${$('#datum').val()}`,
+                    Ocjena: `${$('#ocjena').val()}`,
+                    KorImeKorisnikKomentar: dataP.KorisnickoIme,
+                    IdVoznjaKomentar: id2,
+                };
+
+                let voznja = {
+                    MusterijaVoznja: dataP.KorisnickoIme,
+                    VozacVoznja: null,
+                    Iznos: 0,
+                    DispecerVoznja: null,
+                    Komentar: komentarVoznja,
+                };
+
+                $.ajax({
+                    type: 'PUT',
+                    url: '/api/Voznja1/' + id2,
+                    data: JSON.stringify(voznja),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data) {
+                            alert('Uspjesno otkazana voznja');
+                            localStorage.setItem("voznjaOtkaz", id2);
+                            $(location).attr('href', 'HtmlPage1.html');
+                        } else {
+                            alert('Ne postoji voznja koju zelite da otkazete ili nije u odgovarajucem stanju');
+                        }
+                    },
+                })
+
+            });
+
+
+
+
+
             $("#dodajVozaca").click(function () {
                 $("#DodavanjeVozaca").show();
                 $("#IzmjenaKorisnik1").hide();
@@ -398,7 +562,7 @@
                 $("#DodavanjeVozaca").hide();
                 $("#IzmjenaKorisnik").hide();
                 $("#PrikazKorisnik").hide();
-                
+                $("#IzmjenaVoznja").hide();
 
             });
 
@@ -408,6 +572,7 @@
                 $("#DodavanjeVozaca").hide();
                 $("#IzmjenaKorisnik").hide();
                 $("#PrikazKorisnik").hide();
+                
                 
                 
 
@@ -433,7 +598,6 @@
                     VozacVoznja: null,
                     Iznos: 0,
                     DispecerVoznja: null,
-                    StatusVoznje: `${$('#stat').val()}`,
                 };
 
 
@@ -457,7 +621,7 @@
 
            
                
-
+             
             $("#prikaziVoznjeMust").click(function () {
                 $("#PrikaziVoznjeMusterije").show();
                 $("#DodavanjeVoznjeMusterija").hide();
@@ -467,7 +631,30 @@
                     let tableOfProducts = "<table border='1'>";
                     for (voznja in data) {
                         if (dataP.KorisnickoIme == data[voznja].MusterijaVoznja) {
-                            tableOfProducts += `<tr><td>${data[voznja].MusterijaVoznja}</td><td>${data[voznja].Iznos}</td></tr>`;
+                            tableOfProducts += `<tr><td>${data[voznja].MusterijaVoznja}</td><td>${data[voznja].DTPorudzbine}</td><td>${data[voznja].Dolazak.X}</td><td>${data[voznja].Dolazak.Y}</td><td>${data[voznja].Dolazak.Adresa.UlicaIBroj}</td><td>${data[voznja].Dolazak.Adresa.NaseljenoMjesto}</td><td>${data[voznja].Dolazak.Adresa.PozivniBroj}</td>`;
+                            if (data[voznja].StatusVoznje == 0) {
+                                tableOfProducts += '<td>Kreirana</td>';
+                            } else if (data[voznja].StatusVoznje == 1){
+                                tableOfProducts += '<td>Formirana</td>';
+                            } else if (data[voznja].StatusVoznje == 2) {
+                                tableOfProducts += '<td>Obradjena</td>';
+                            } else if (data[voznja].StatusVoznje == 3) {
+                                tableOfProducts += '<td>Prihvacena</td>';
+                            } else if (data[voznja].StatusVoznje == 4) {
+                                tableOfProducts += '<td>Otkazana</td>';
+                            } else if (data[voznja].StatusVoznje == 5) {
+                                tableOfProducts += '<td>Neuspjesna</td>';
+                            } else if (data[voznja].StatusVoznje == 6) {
+                                tableOfProducts += '<td>Uspjesna</td>';
+                            } else  {
+                                tableOfProducts += '<td>Utoku</td>';
+                            } 
+                            tableOfProducts += `<td>${data[voznja].Komentar.Opis}</td><td>${data[voznja].Komentar.Ocjena}</td><td>${data[voznja].Komentar.DTObjave}</td><td><button id="izmjeniVoznja" type="button" value=${data[voznja].IdVoznje}><b>Izmjeni voznju</b></button><td><button id="otkaziVoznja" type="button" value=${data[voznja].IdVoznje}><b>Otkazi voznju</b></button></td></td></tr>`;
+                            //if (data[voznja].StatusVoznje == 4) {
+                            //    tableOfProducts += '<td><button id="otkaziVoznja" type="button" value = "disable"><b>Otkazi voznju</b></button></td></tr>';
+                            //} else {  
+                            //    tableOfProducts += '<td><button id="otkaziVoznja" type="button" value=${data[voznja].IdVoznje}><b>Otkazi voznju</b></button></td></tr>';
+                            //}
                         }
                     }
                     tableOfProducts += "</table>";
@@ -515,10 +702,22 @@
     </div>
     <div id="divKorisnik">
         <p><b>Wecome user!</b></p>
-        <button id="prikaziKorisnik" type="button"><b>Prikazi podatke</b></button>
-        <button id="izmjeniKorisnik" type="button"><b>Izmjeni podatke</b></button>
-        <button id="dodajVoznju" type="button"><b>Naruci voznju</b></button>
         <button id="prikaziVoznjeMust" type="button"><b>Prikazi voznje</b></button>
+        <button id="dodajVoznju" type="button"><b>Naruci voznju</b></button>
+        <button id="prikaziKorisnik" type="button"><b>Prikazi licne podatke</b></button>
+        <button id="izmjeniKorisnik" type="button"><b>Izmjeni licne podatke</b></button>
+
+        <div id="IzmjenaVoznja">
+            <div id="IzmjenaShow3"></div>
+            <button id="potvrdiIzmjenuVoznja" type="button"><b>Potvrdi izmjenu</b></button>
+        </div>
+
+        <div id="KomentarVoznja">
+            <div id="IzmjenaShow4"></div>
+            <button id="potvrdiKomentar" type="button"><b>Potvrdi komentar</b></button>
+        </div>
+
+
         <div id="PrikaziVoznjeMusterije"></div>
         <div id="PrikazKorisnik"></div>
         <div id="IzmjenaKorisnik">
@@ -583,16 +782,6 @@
                     </td>
                 </tr>
 
-                <tr>
-                    <td><b>Status voznje</b></td>
-                    <td>
-                        <select name="StatusVoznje " id="stat">
-                            <option value="1">
-                                Kreirana
-                            </option>
-                        </select>
-                    </td>
-                </tr>
 
 
             </table>
@@ -604,156 +793,155 @@
     </div>
 
 
-    <div id="divDispecer">
-        <p><b>Wecome dispatcher!</b></p>
-        <button id="prikaziKorisnik1" type="button"><b>Prikazi podatke</b></button>
-        <button id="izmjeniKorisnik1" type="button"><b>Izmjeni podatke</b></button>
-        <button id="dodajVozaca" type="button"><b> Dodaj vozaca </b></button>
-        
-        <div id="PrikazKorisnik1"></div>
-        <div id="IzmjenaKorisnik1">
-            <div id="IzmjenaShow1">
+        <div id="divDispecer">
+            <p><b>Wecome dispatcher!</b></p>
+            <button id="prikaziKorisnik1" type="button"><b>Prikazi podatke</b></button>
+            <button id="izmjeniKorisnik1" type="button"><b>Izmjeni podatke</b></button>
+            <button id="dodajVozaca" type="button"><b> Dodaj vozaca </b></button>
+
+
+            <div id="PrikazKorisnik1"></div>
+            <div id="IzmjenaKorisnik1">
+                <div id="IzmjenaShow1"></div>
+                <button id="potvrdiIzmjenu1" type="button"><b>Izmjeni podatke</b></button>
+            </div>
+
+            <div id="DodavanjeVozaca">
+
+                <table border=1>
+                    <tr>
+                        <td><b>Korisnicko ime</b></td>
+                        <td><input id="korImeReg1" type="text" name="KorisnickoIme" required /></td>
+                    </tr>
+                    <tr>
+                        <td><b>Lozinka</b></td>
+                        <td><input id="korPassReg1" type="password" name="Lozinka" required /></td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Ime</b></td>
+                        <td><input id="ime1" type="text" name="Ime" required /></td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Prezime</b></td>
+                        <td><input id="prezime1" type="text" name="Prezime" required /></td>
+                    </tr>
+
+
+                    <tr>
+                        <td><b>JMBG</b></td>
+                        <td><input id="jmbg1" type="text" name="JMBG" required /></td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Pol</b></td>
+                        <td>
+                            <select name="Pol" id="pol1">
+                                <option>
+                                    Z
+                                </option>
+                                <option>
+                                    M
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Broj telefona</b></td>
+                        <td><input id="brTelefona1" type="text" name="KontaktTelefon" required /></td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Email adresa</b></td>
+                        <td><input id="email1" type="email" name="Email" required /></td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Godiste automobila</b></td>
+                        <td><input id="godiste" type="text" name="Godiste" required /></td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Registracija</b></td>
+                        <td><input id="registracija" type="text" name="Registracija" required /></td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Broj vozila</b></td>
+                        <td><input id="brojvozila" type="text" name="BrojVozila" required /></td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Tip automobila</b></td>
+                        <td>
+                            <select name="TipAuta" id="tipauta">
+                                <option value="1">
+                                    Kombi
+                                </option>
+                                <option value="0">
+                                    Putnicki
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Id lokacije</b></td>
+                        <td><input id="idlokacije" type="text" name="IdLok" required /></td>
+                    </tr>
+
+                    <tr>
+                        <td><b>X koordinata</b></td>
+                        <td><input id="x" type="text" name="X" required /></td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Y koordinata</b></td>
+                        <td><input id="y" type="text" name="Y" required /></td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Id adrese</b></td>
+                        <td><input id="idadrese" type="text" name="IdAdr" required /></td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Ulica i broj</b></td>
+                        <td><input id="ulicaibroj" type="text" name="UlicaIBroj" required /></td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Naseljeno mjesto</b></td>
+                        <td><input id="naseljenomjesto" type="text" name="NaseljenoMjesto" required /></td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Pozivni broj mjesta</b></td>
+                        <td><input id="pozivnibroj" type="text" name="PozivniBroj" required /></td>
+                    </tr>
+
+
+                </table>
+                <button id="dodaj" type="button"><b>Dodaj</b></button>
 
             </div>
-            <button id="potvrdiIzmjenu1" type="button"><b>Izmjeni podatke</b></button>
         </div>
-        
-        <div id="DodavanjeVozaca">
-
-            <table border=1>
-                <tr>
-                    <td><b>Korisnicko ime</b></td>
-                    <td><input id="korImeReg1" type="text" name="KorisnickoIme" required /></td>
-                </tr>
-                <tr>
-                    <td><b>Lozinka</b></td>
-                    <td><input id="korPassReg1" type="password" name="Lozinka" required /></td>
-                </tr>
-
-                <tr>
-                    <td><b>Ime</b></td>
-                    <td><input id="ime1" type="text" name="Ime" required /></td>
-                </tr>
-
-                <tr>
-                    <td><b>Prezime</b></td>
-                    <td><input id="prezime1" type="text" name="Prezime" required /></td>
-                </tr>
 
 
-                <tr>
-                    <td><b>JMBG</b></td>
-                    <td><input id="jmbg1" type="text" name="JMBG" required /></td>
-                </tr>
+        <div id="divVozac">
+            <p><b>Wecome driver!</b></p>
+            <button id="prikaziKorisnik2" type="button"><b>Prikazi podatke</b></button>
+            <button id="izmjeniKorisnik2" type="button"><b>Izmjeni podatke</b></button>
+            <div id="PrikazKorisnik2"></div>
+            <div id="IzmjenaKorisnik2">
+                <div id="IzmjenaShow2">
 
-                <tr>
-                    <td><b>Pol</b></td>
-                    <td>
-                        <select name="Pol" id="pol1">
-                            <option>
-                                Z
-                            </option>
-                            <option>
-                                M
-                            </option>
-                        </select>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td><b>Broj telefona</b></td>
-                    <td><input id="brTelefona1" type="text" name="KontaktTelefon" required /></td>
-                </tr>
-
-                <tr>
-                    <td><b>Email adresa</b></td>
-                    <td><input id="email1" type="email" name="Email" required /></td>
-                </tr>
-
-                <tr>
-                    <td><b>Godiste automobila</b></td>
-                    <td><input id="godiste" type="text" name="Godiste" required /></td>
-                </tr>
-
-                <tr>
-                    <td><b>Registracija</b></td>
-                    <td><input id="registracija" type="text" name="Registracija" required /></td>
-                </tr>
-
-                <tr>
-                    <td><b>Broj vozila</b></td>
-                    <td><input id="brojvozila" type="text" name="BrojVozila" required /></td>
-                </tr>
-
-                <tr>
-                    <td><b>Tip automobila</b></td>
-                    <td>
-                        <select name="TipAuta" id="tipauta">
-                            <option value="1">
-                                Kombi
-                            </option>
-                            <option value="0">
-                                Putnicki
-                            </option>
-                        </select>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td><b>Id lokacije</b></td>
-                    <td><input id="idlokacije" type="text" name="IdLok" required /></td>
-                </tr>
-
-                <tr>
-                    <td><b>X koordinata</b></td>
-                    <td><input id="x" type="text" name="X" required /></td>
-                </tr>
-
-                <tr>
-                    <td><b>Y koordinata</b></td>
-                    <td><input id="y" type="text" name="Y" required /></td>
-                </tr>
-
-                <tr>
-                    <td><b>Id adrese</b></td>
-                    <td><input id="idadrese" type="text" name="IdAdr" required /></td>
-                </tr>
-
-                <tr>
-                    <td><b>Ulica i broj</b></td>
-                    <td><input id="ulicaibroj" type="text" name="UlicaIBroj" required /></td>
-                </tr>
-
-                <tr>
-                    <td><b>Naseljeno mjesto</b></td>
-                    <td><input id="naseljenomjesto" type="text" name="NaseljenoMjesto" required /></td>
-                </tr>
-
-                <tr>
-                    <td><b>Pozivni broj mjesta</b></td>
-                    <td><input id="pozivnibroj" type="text" name="PozivniBroj" required /></td>
-                </tr>
-
-
-            </table>
-            <button id="dodaj" type="button"><b>Dodaj</b></button>
-
-        </div>
-    </div>
-
-
-    <div id="divVozac">
-        <p><b>Wecome driver!</b></p>
-        <button id="prikaziKorisnik2" type="button"><b>Prikazi podatke</b></button>
-        <button id="izmjeniKorisnik2" type="button"><b>Izmjeni podatke</b></button>
-        <div id="PrikazKorisnik2"></div>
-        <div id="IzmjenaKorisnik2">
-            <div id="IzmjenaShow2">
-
+                </div>
+                <button id="potvrdiIzmjenu2" type="button"><b>Izmjeni podatke</b></button>
             </div>
-            <button id="potvrdiIzmjenu2" type="button"><b>Izmjeni podatke</b></button>
         </div>
-    </div>
 
 </body>
 </html>
