@@ -28,6 +28,7 @@
                             $("#divVozac").hide();
                             $("#IzmjenaKorisnik1").hide();
                             $("#DodavanjeVozaca").hide();
+                            $("#DodavanjeVoznjeDispecer").hide();
 
                         } else if (data.Uloga == 1) {
                             $("#divKorisnik").show();
@@ -38,6 +39,7 @@
                             $("#PrikaziVoznjeMusterije").hide();
                             $("#IzmjenaVoznja").hide();
                             $("#KomentarVoznja").hide();
+                            
 
 
 
@@ -82,6 +84,7 @@
                 $("#IzmjenaKorisnik1").hide();
                 $("#PrikazKorisnik1").show();
                 $("#DodavanjeVozaca").hide();
+                $("#DodavanjeVoznjeDispecer").hide();
 
                 let tableofData = "<table border='1'>";
                 tableofData += `<tr><td>Id</td><td>${dataP.Id}</td></tr>`;
@@ -111,6 +114,7 @@
                 tableofData += `<tr><td>JMBG</td><td>${dataP.JMBG}</td></tr>`;
                 tableofData += `<tr><td>Kontakt telefon</td><td>${dataP.KontaktTelefon}</td></tr>`;
                 tableofData += `<tr><td>Email</td><td>${dataP.Email}</td></tr>`;
+                tableofData += `<tr><td>Zauzet</td><td>${dataP.Zauzet}</td></tr>`;
                 tableofData += `<tr><td>Id lokacije</td><td>${dataP.Lokacija.IdLok}</td></tr>`;
                 tableofData += `<tr><td>X</td><td>${dataP.Lokacija.X}</td></tr>`;
                 tableofData += `<tr><td>Y</td><td>${dataP.Lokacija.Y}</td></tr>`;
@@ -160,6 +164,7 @@
                 $("#IzmjenaKorisnik1").show();
                 $("#PrikazKorisnik1").hide();
                 $("#DodavanjeVozaca").hide();
+                $("#DodavanjeVoznjeDispecer").hide();
 
                 let tableofData = "<table border='1'>";
                 tableofData += "<tr><td>Korisnicko ime</td><td><input id=\"korImeReg\" type=\"text\" name=\"KorisnickoIme\" value=\"" + dataP.KorisnickoIme + "\"/></td></tr>";
@@ -556,13 +561,14 @@
             });
 
 
-            $("#dodajVoznju").click(function () {
+            $("#dodajVoznju").click(function () {    // za musteriju
                 $("#PrikaziVoznjeMusterije").hide();
                 $("#DodavanjeVoznjeMusterija").show();
                 $("#DodavanjeVozaca").hide();
                 $("#IzmjenaKorisnik").hide();
                 $("#PrikazKorisnik").hide();
                 $("#IzmjenaVoznja").hide();
+                $("#KomentarVoznja").hide();
 
             });
 
@@ -619,6 +625,70 @@
             });
 
 
+            $("#dodajVoznjuDisp").click(function () {    // za dispecera
+                $("#PrikaziVoznjeMusterije").hide();
+                $("#DodavanjeVoznjeMusterija").hide();
+                $("#DodavanjeVozaca").hide();
+                $("#IzmjenaKorisnik").hide();
+                $("#PrikazKorisnik").hide();
+                $("#IzmjenaVoznja").hide();
+                $("#KomentarVoznja").hide();
+                $("#DodavanjeVoznjeDispecer").show();
+
+            });
+
+            $("#dodajVoznjuDispecer").click(function () {
+                $("#PrikaziVoznjeMusterije").hide();
+                $("#DodavanjeVoznjeMusterija").hide();
+                $("#DodavanjeVozaca").hide();
+                $("#IzmjenaKorisnik").hide();
+                $("#PrikazKorisnik").hide();
+                $("#DodavanjeVoznjeDispecer").show();
+
+
+                let adresaDolazak = {
+                    IdAdr: `${$('#idadrDisp').val()}`,
+                    UlicaIBroj: `${$('#ulicaibrDisp').val()}`,
+                    NaseljenoMjesto: `${$('#naseljenomjDisp').val()}`,
+                    PozivniBroj: `${$('#pozivnibrDisp').val()}`,
+                };
+
+                let lokacijaDolazak = {
+                    IdLok: `${$('#idlokdolDisp').val()}`,
+                    X: `${$('#xkoordinataDisp').val()}`,
+                    Y: `${$('#ykoordinataDisp').val()}`,
+                    Adresa: adresaDolazak,
+                };
+
+
+                let voznja = {
+                    Dolazak: lokacijaDolazak,
+                    TipAutaVoznje: `${$('#tipauDisp').val()}`,
+                    MusterijaVoznja: null,
+                    VozacVoznja: null,
+                    Iznos: 0,
+                    DispecerVoznja: dataP.KorisnickoIme,
+                };
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/Voznja',
+                    data: JSON.stringify(voznja),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data) {
+                            alert('Uspjesno unesena voznja');             //////////////// jel treba localstorage
+                            $(location).attr('href', 'HtmlPage1.html');
+                        } else {
+                            alert('Vec je drugi taxista na toj lokaciji.');
+                        }
+                    },
+                })
+            });
+
+
            
                
              
@@ -629,9 +699,10 @@
                 $("#PrikazKorisnik").hide();
                 $.get("/api/Voznja", function (data, status) {
                     let tableOfProducts = "<table border='1'>";
+                    tableOfProducts += `<tr><th>Mušterija vožnje</th><th>Datum porudžbine</th><th>Ulica i br. dolaska</th><th>Mjesto dol.</th><th>Pozivni br. dol.</th><th>Status vož.</th><th>Opis kom.</th><th>Ocjena kom.</th><th>Dat. obj. kom. vož.</th><th> </th><th> </th></tr>`;
                     for (voznja in data) {
                         if (dataP.KorisnickoIme == data[voznja].MusterijaVoznja) {
-                            tableOfProducts += `<tr><td>${data[voznja].MusterijaVoznja}</td><td>${data[voznja].DTPorudzbine}</td><td>${data[voznja].Dolazak.X}</td><td>${data[voznja].Dolazak.Y}</td><td>${data[voznja].Dolazak.Adresa.UlicaIBroj}</td><td>${data[voznja].Dolazak.Adresa.NaseljenoMjesto}</td><td>${data[voznja].Dolazak.Adresa.PozivniBroj}</td>`;
+                            tableOfProducts += `<tr><td>${data[voznja].MusterijaVoznja}</td><td>${data[voznja].DTPorudzbine}</td><td>${data[voznja].Dolazak.Adresa.UlicaIBroj}</td><td>${data[voznja].Dolazak.Adresa.NaseljenoMjesto}</td><td>${data[voznja].Dolazak.Adresa.PozivniBroj}</td>`;
                             if (data[voznja].StatusVoznje == 0) {
                                 tableOfProducts += '<td>Kreirana</td>';
                             } else if (data[voznja].StatusVoznje == 1){
@@ -793,141 +864,202 @@
     </div>
 
 
-        <div id="divDispecer">
-            <p><b>Wecome dispatcher!</b></p>
-            <button id="prikaziKorisnik1" type="button"><b>Prikazi podatke</b></button>
-            <button id="izmjeniKorisnik1" type="button"><b>Izmjeni podatke</b></button>
-            <button id="dodajVozaca" type="button"><b> Dodaj vozaca </b></button>
+    <div id="divDispecer">
+        <p><b>Wecome dispatcher!</b></p>
+        <button id="prikaziKorisnik1" type="button"><b>Prikazi podatke</b></button>
+        <button id="izmjeniKorisnik1" type="button"><b>Izmjeni podatke</b></button>
+        <button id="dodajVozaca" type="button"><b> Dodaj vozaca </b></button>
+        <button id="dodajVoznjuDisp" type="button"><b>Naruci voznju</b></button>
 
-
-            <div id="PrikazKorisnik1"></div>
-            <div id="IzmjenaKorisnik1">
-                <div id="IzmjenaShow1"></div>
-                <button id="potvrdiIzmjenu1" type="button"><b>Izmjeni podatke</b></button>
-            </div>
-
-            <div id="DodavanjeVozaca">
-
-                <table border=1>
-                    <tr>
-                        <td><b>Korisnicko ime</b></td>
-                        <td><input id="korImeReg1" type="text" name="KorisnickoIme" required /></td>
-                    </tr>
-                    <tr>
-                        <td><b>Lozinka</b></td>
-                        <td><input id="korPassReg1" type="password" name="Lozinka" required /></td>
-                    </tr>
-
-                    <tr>
-                        <td><b>Ime</b></td>
-                        <td><input id="ime1" type="text" name="Ime" required /></td>
-                    </tr>
-
-                    <tr>
-                        <td><b>Prezime</b></td>
-                        <td><input id="prezime1" type="text" name="Prezime" required /></td>
-                    </tr>
-
-
-                    <tr>
-                        <td><b>JMBG</b></td>
-                        <td><input id="jmbg1" type="text" name="JMBG" required /></td>
-                    </tr>
-
-                    <tr>
-                        <td><b>Pol</b></td>
-                        <td>
-                            <select name="Pol" id="pol1">
-                                <option>
-                                    Z
-                                </option>
-                                <option>
-                                    M
-                                </option>
-                            </select>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td><b>Broj telefona</b></td>
-                        <td><input id="brTelefona1" type="text" name="KontaktTelefon" required /></td>
-                    </tr>
-
-                    <tr>
-                        <td><b>Email adresa</b></td>
-                        <td><input id="email1" type="email" name="Email" required /></td>
-                    </tr>
-
-                    <tr>
-                        <td><b>Godiste automobila</b></td>
-                        <td><input id="godiste" type="text" name="Godiste" required /></td>
-                    </tr>
-
-                    <tr>
-                        <td><b>Registracija</b></td>
-                        <td><input id="registracija" type="text" name="Registracija" required /></td>
-                    </tr>
-
-                    <tr>
-                        <td><b>Broj vozila</b></td>
-                        <td><input id="brojvozila" type="text" name="BrojVozila" required /></td>
-                    </tr>
-
-                    <tr>
-                        <td><b>Tip automobila</b></td>
-                        <td>
-                            <select name="TipAuta" id="tipauta">
-                                <option value="1">
-                                    Kombi
-                                </option>
-                                <option value="0">
-                                    Putnicki
-                                </option>
-                            </select>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td><b>Id lokacije</b></td>
-                        <td><input id="idlokacije" type="text" name="IdLok" required /></td>
-                    </tr>
-
-                    <tr>
-                        <td><b>X koordinata</b></td>
-                        <td><input id="x" type="text" name="X" required /></td>
-                    </tr>
-
-                    <tr>
-                        <td><b>Y koordinata</b></td>
-                        <td><input id="y" type="text" name="Y" required /></td>
-                    </tr>
-
-                    <tr>
-                        <td><b>Id adrese</b></td>
-                        <td><input id="idadrese" type="text" name="IdAdr" required /></td>
-                    </tr>
-
-                    <tr>
-                        <td><b>Ulica i broj</b></td>
-                        <td><input id="ulicaibroj" type="text" name="UlicaIBroj" required /></td>
-                    </tr>
-
-                    <tr>
-                        <td><b>Naseljeno mjesto</b></td>
-                        <td><input id="naseljenomjesto" type="text" name="NaseljenoMjesto" required /></td>
-                    </tr>
-
-                    <tr>
-                        <td><b>Pozivni broj mjesta</b></td>
-                        <td><input id="pozivnibroj" type="text" name="PozivniBroj" required /></td>
-                    </tr>
-
-
-                </table>
-                <button id="dodaj" type="button"><b>Dodaj</b></button>
-
-            </div>
+        <div id="PrikazKorisnik1"></div>
+        <div id="IzmjenaKorisnik1">
+            <div id="IzmjenaShow1"></div>
+            <button id="potvrdiIzmjenu1" type="button"><b>Izmjeni podatke</b></button>
         </div>
+
+        <div id="DodavanjeVozaca">
+
+            <table border=1>
+                <tr>
+                    <td><b>Korisnicko ime</b></td>
+                    <td><input id="korImeReg1" type="text" name="KorisnickoIme" required /></td>
+                </tr>
+                <tr>
+                    <td><b>Lozinka</b></td>
+                    <td><input id="korPassReg1" type="password" name="Lozinka" required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Ime</b></td>
+                    <td><input id="ime1" type="text" name="Ime" required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Prezime</b></td>
+                    <td><input id="prezime1" type="text" name="Prezime" required /></td>
+                </tr>
+
+
+                <tr>
+                    <td><b>JMBG</b></td>
+                    <td><input id="jmbg1" type="text" name="JMBG" required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Pol</b></td>
+                    <td>
+                        <select name="Pol" id="pol1">
+                            <option>
+                                Z
+                            </option>
+                            <option>
+                                M
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><b>Broj telefona</b></td>
+                    <td><input id="brTelefona1" type="text" name="KontaktTelefon" required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Email adresa</b></td>
+                    <td><input id="email1" type="email" name="Email" required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Godiste automobila</b></td>
+                    <td><input id="godiste" type="text" name="Godiste" required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Registracija</b></td>
+                    <td><input id="registracija" type="text" name="Registracija" required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Broj vozila</b></td>
+                    <td><input id="brojvozila" type="text" name="BrojVozila" required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Tip automobila</b></td>
+                    <td>
+                        <select name="TipAuta" id="tipauta">
+                            <option value="1">
+                                Kombi
+                            </option>
+                            <option value="0">
+                                Putnicki
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><b>Id lokacije</b></td>
+                    <td><input id="idlokacije" type="text" name="IdLok" required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>X koordinata</b></td>
+                    <td><input id="x" type="text" name="X" required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Y koordinata</b></td>
+                    <td><input id="y" type="text" name="Y" required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Id adrese</b></td>
+                    <td><input id="idadrese" type="text" name="IdAdr" required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Ulica i broj</b></td>
+                    <td><input id="ulicaibroj" type="text" name="UlicaIBroj" required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Naseljeno mjesto</b></td>
+                    <td><input id="naseljenomjesto" type="text" name="NaseljenoMjesto" required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Pozivni broj mjesta</b></td>
+                    <td><input id="pozivnibroj" type="text" name="PozivniBroj" required /></td>
+                </tr>
+
+
+            </table>
+            <button id="dodaj" type="button"><b>Dodaj</b></button>
+
+        </div>
+
+        <div id="DodavanjeVoznjeDispecer">
+
+            <table border=1>
+
+                <tr>
+                    <td><b>Id lokacije dolaska</b></td>
+                    <td><input id="idlokdolDisp" type="text" name="IdLok " required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>X lokacije dolaska</b></td>
+                    <td><input id="xkoordinataDisp" type="text" name="X" required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Y lokacije dolaska</b></td>
+                    <td><input id="ykoordinataDisp" type="text" name="Y" required /></td>
+                </tr>
+
+
+                <tr>
+                    <td><b>IdAdr lokacije dolaska</b></td>
+                    <td><input id="idadrDisp" type="text" name="IdAdr" required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Ulica i broj dolaska</b></td>
+                    <td><input id="ulicaibrDisp" type="text" name="UlicaIBroj" required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Naseljeno mjesto dolaska</b></td>
+                    <td><input id="naseljenomjDisp" type="text" name="NaseljenoMjesto" required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Pozivni broj mjesta dolaska</b></td>
+                    <td><input id="pozivnibrDisp" type="text" name="PozivniBroj" required /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Tip auta voznje</b></td>
+                    <td>
+                        <select name="TipAutaVoznje" id="tipauDisp">
+                            <option value="1">
+                                Kombi
+                            </option>
+                            <option>
+                                Putnicki
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+
+
+
+            </table>
+            <button id="dodajVoznjuDispecer" type="button"><b>Dodaj voznju</b></button>
+
+        </div>
+    </div>
 
 
         <div id="divVozac">

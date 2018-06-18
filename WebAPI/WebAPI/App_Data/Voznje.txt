@@ -1,3 +1,3 @@
-3707448|17.6.2018 22:47:39|0|232|23|4|Kralja Petra 6|asfas|21000|Kombi|Elena|0|0|0|0|||||0||Kul|1.1.2018 0:00:00|Elena|3707448|3|Otkazana
-61302538|17.6.2018 23:43:50|44|34|2|3|afasf|df|121|Putnicki|Elena|0|0|0|0|||||0||Nije lose|1.1.2018 3:00:00|Elena|61302538|3|Otkazana
-59457647|17.6.2018 23:45:24|0|344,3|223,32|23|Gunduliceva 28|Banja Luka|21000|Kombi|Elena|0|0|0|0|||||0|||1.1.0001 0:00:00||0|0|Kreirana
+60052224|18.6.2018 1:43:39|222|222|222|222|Kralja Petra 5|Novi Sad |21000|Putnicki|Maja|0|0|0|0|||||0|||1.1.0001 0:00:00||0|0|Kreirana
+14011335|18.6.2018 1:44:36|222|222|222|222|Kralja Petra 4|Novi Sad|21000|Putnicki|Maja|0|0|0|0|||||0||Onako|1.1.2018 3:20:00|Maja|14011335|3|Otkazana
+61688809|18.6.2018 1:46:27|222|222|0|222|Kralja Petra 6|Novi Sad|21000|Putnicki||0|0|0|0|||||0|Gorance||1.1.0001 0:00:00||0|0|Formirana

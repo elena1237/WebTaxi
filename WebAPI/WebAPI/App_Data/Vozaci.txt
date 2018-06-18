@@ -1,2 +1,1 @@
-12408161|Ljubomir|ljubo|Ljubo|Nenadovic|M| 10059952345|0642354674|ljubo@gmail.com|Vozac|23|34|5|32|Majke Knezopoljke 32|Novi Sad|21000|12408161|1999|345-M-435|12|Kombi
-66070359|Pero|rope|Perica|Markovic|M| 3243234|24342342|sdsa@gmail.com|Vozac|2|3|4|22|jknkj|dssasada|sada|66070359|223232|3234212|421|Kombi
+31307802|Marko|lala|Markan|Markovic|M| 34234235235|3532532|ma@gmail.com|Vozac|34|23|23|23|Kralja Petra 4|Banja Luka|78000|31307802|1999|234-M-345|3432|Putnicki|False
