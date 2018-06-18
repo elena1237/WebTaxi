@@ -1,1 +1,4 @@
-31307802|Marko|lala|Markan|Markovic|M| 34234235235|3532532|ma@gmail.com|Vozac|34|23|23|23|Kralja Petra 4|Banja Luka|78000|31307802|1999|234-M-345|3432|Putnicki|False
+31923445|Marko|lala|Markan|Markovic|M| 12344352|06423213|marko@gmail.com|Vozac|222|2,2|1,3|33|Kralja Alfonsa 44|Banja Luka|78000|31923445|1999|234-M-345|34|Putnicki|False
+35772575|Ivana|ivka|Ivancica|Radusin|Z| 2323214|43543|iva@gmail.com|Vozac|4543|4543|345|34|Lalal|BL|78000|35772575|1996|344-I-456|232|Kombi|True
+24242277|Ranko|lolo|Rankan|Popovic|M| 3434|2323|ra@gmail.com|Vozac|3|5|5|5|Joj|Banja Luka|78000|24242277|1989|432-T-543|45|Kombi|False
+35113868|Maza|LALA|Mazica|sadas|Z| kmkl|87|asdsa@gmail.com|Vozac|7|8|0|9|sjadasd|j|jk|35113868|9|3|7|Kombi|True

@@ -14,6 +14,11 @@ namespace WebAPI.Controllers
         // POST api/vozac
         public bool Post([FromBody]Vozac korisnik)
         {
+            if(Vozaci.vozaci==null)
+            {
+                Vozaci.vozaci = new Dictionary<int, Vozac>(); 
+            }
+
 
             foreach (Vozac kor in Vozaci.vozaci.Values)
             {
@@ -38,7 +43,7 @@ namespace WebAPI.Controllers
                 }
             }
 
-            Vozaci.vozaci = new Dictionary<int, Vozac>();  ////////////////
+            
             SomeType s = new SomeType();
             korisnik.Id = s.GetHashCode();
             korisnik.Uloga = Enums.Uloga.Vozac;
@@ -107,6 +112,12 @@ namespace WebAPI.Controllers
             }
             System.IO.File.WriteAllLines(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Vozaci.txt", lines);
 
+        }
+
+        // GET api/vozac
+        public Dictionary<int, Vozac> Get()
+        {
+            return Vozaci.vozaci;
         }
 
     }

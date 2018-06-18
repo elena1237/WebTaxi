@@ -39,6 +39,7 @@
                             $("#PrikaziVoznjeMusterije").hide();
                             $("#IzmjenaVoznja").hide();
                             $("#KomentarVoznja").hide();
+                            $("#DodavanjeVoznjeDispecer").hide();
                             
 
 
@@ -272,6 +273,7 @@
 
 
 
+
             $("#potvrdiIzmjenu").click(function () {
 
                 let korisnik = {
@@ -422,7 +424,6 @@
 
                 let voznja = {
                     Dolazak: lokacijaDolazak,
-                    //TipAutaVoznje: `${$('#tipau').val()}`,
                     MusterijaVoznja: dataP.KorisnickoIme,
                     VozacVoznja: null,
                     Iznos: 0,
@@ -624,20 +625,46 @@
                 })
             });
 
-
+            
             $("#dodajVoznjuDisp").click(function () {    // za dispecera
                 $("#PrikaziVoznjeMusterije").hide();
                 $("#DodavanjeVoznjeMusterija").hide();
                 $("#DodavanjeVozaca").hide();
-                $("#IzmjenaKorisnik").hide();
-                $("#PrikazKorisnik").hide();
+                $("#IzmjenaKorisnik1").hide();
+                $("#PrikazKorisnik1").hide();
                 $("#IzmjenaVoznja").hide();
                 $("#KomentarVoznja").hide();
                 $("#DodavanjeVoznjeDispecer").show();
 
             });
 
-            $("#dodajVoznjuDispecer").click(function () {
+
+            
+            $("#dodajVoznjuDispecer").click(function () {    // za dispecera
+                $.get("/api/Vozac", function (data, status) {
+                    let pom = `${$('#tipauDisp').val()}`
+                    let pom1;
+                    if (pom == "Kombi") {
+                        pom1 = 1;
+                    } else {
+                        pom1 = 0;
+                    }
+                    let table = "<table border='1'><tr><td><select id=\"vozac\" name=\"VozacVoznja\"> ";
+
+                    for (driver in data) {
+                        if (data[driver].Automobil.TipAuta == pom1 && data[driver].Zauzet == false) {
+                            table += "<option>" + data[driver].KorisnickoIme + "</option>";
+                        }
+                    }
+                    table += "</select></td></tr></table><button id=\"dodajVoznjuDispecer2\" type=\"button\"><b>Dodaj voznju</b></button>";
+                    $("#DodavanjeVoznjeDispecer").append(table);
+                });
+
+            });
+
+
+            $(document).on('click', '#dodajVoznjuDispecer2', function () {
+            
                 $("#PrikaziVoznjeMusterije").hide();
                 $("#DodavanjeVoznjeMusterija").hide();
                 $("#DodavanjeVozaca").hide();
@@ -660,12 +687,14 @@
                     Adresa: adresaDolazak,
                 };
 
+               
+
 
                 let voznja = {
                     Dolazak: lokacijaDolazak,
                     TipAutaVoznje: `${$('#tipauDisp').val()}`,
                     MusterijaVoznja: null,
-                    VozacVoznja: null,
+                    VozacVoznja: `${$('#vozac').val()}`,
                     Iznos: 0,
                     DispecerVoznja: dataP.KorisnickoIme,
                 };
@@ -852,6 +881,8 @@
                         </select>
                     </td>
                 </tr>
+
+
 
 
 
@@ -1043,7 +1074,7 @@
                     <td><b>Tip auta voznje</b></td>
                     <td>
                         <select name="TipAutaVoznje" id="tipauDisp">
-                            <option value="1">
+                            <option>
                                 Kombi
                             </option>
                             <option>
@@ -1053,10 +1084,12 @@
                     </td>
                 </tr>
 
+                
+
 
 
             </table>
-            <button id="dodajVoznjuDispecer" type="button"><b>Dodaj voznju</b></button>
+            <button id="dodajVoznjuDispecer" type="button"><b>Izaberi vozaca</b></button>
 
         </div>
     </div>

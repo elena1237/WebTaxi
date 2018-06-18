@@ -20,7 +20,7 @@ namespace WebAPI.Controllers
                     korisnik.TipAutaVoznje = kor.TipAutaVoznje;
                     korisnik.IdVoznje = kor.IdVoznje;
                     korisnik.DTPorudzbine = DateTime.Now;
-                    if (korisnik.MusterijaVoznja != null)
+                    if (korisnik.MusterijaVoznja != null )
                     {
                         korisnik.StatusVoznje = Enums.StatusVoznje.Otkazana;
                         korisnik.Dolazak = new Lokacija();
