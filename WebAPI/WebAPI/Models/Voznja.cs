@@ -31,15 +31,7 @@ namespace WebAPI.Models
             this.IdVoznje = idvoznje;
             this.DTPorudzbine = dtporudzbine;
             this.Dolazak = dolazak;
-            if (tipAutomobila.Equals("Kombi"))
-            {
-                this.TipAutaVoznje = TipAutomobila.Kombi;
-            }
-            else
-            {
-                this.TipAutaVoznje = TipAutomobila.Putnicki;
-            }
-
+            this.TipAutaVoznje = tipAutomobila;
             this.MusterijaVoznja = musterija;
             this.Odrediste = odrediste;
             this.DispecerVoznja = dispecer;

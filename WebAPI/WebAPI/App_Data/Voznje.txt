@@ -1,4 +1,7 @@
-60052224|18.6.2018 1:43:39|222|222|222|222|Kralja Petra 5|Novi Sad |21000|Putnicki|Maja|0|0|0|0|||||0|||1.1.0001 0:00:00||0|0|Kreirana
-14011335|18.6.2018 1:44:36|222|222|222|222|Kralja Petra 4|Novi Sad|21000|Putnicki|Maja|0|0|0|0|||||0||Onako|1.1.2018 3:20:00|Maja|14011335|3|Otkazana
-54869404|18.6.2018 20:34:42|32|5|67|8|Alekse Santica 56|Novi Sad|21000|Kombi||0|0|0|0||||Maza|0|Gorance||1.1.0001 0:00:00||0|0|Formirana
-62836693|18.6.2018 20:37:40|888|8|5|9|skadjska|sadas|sadsa|Putnicki||0|0|0|0||||Ivana|0|Gorance||1.1.0001 0:00:00||0|0|Formirana
+54284939|19.6.2018 2:23:24|7|7|7|7|jknbj|kjnjkn|jknj|Kombi||0|0|0|0||||Ilija|0|Gorance||1.1.0001 0:00:00||0|0|Formirana
+49582139|19.6.2018 2:45:07|5|5|5|5|sadfsaf|uhuihu|huhihih|Putnicki|Elena|0|0|0|0||||Igor|0|Majce||1.1.0001 0:00:00||0|0|Obradjena
+17189561|19.6.2018 2:45:17|7|7|7|7|ujhjjk|kjbj|kjjk|Putnicki|Elena|0|0|0|0||||Mitar|0|Gorance||1.1.0001 0:00:00||0|0|Obradjena
+35567111|19.6.2018 2:45:34|678899|9|9|99|oakfjdka|klkljkjkj|kkkjkj|Kombi|Elena|0|0|0|0||||Jovana|0|Majce||1.1.0001 0:00:00||0|0|Obradjena
+17274517|19.6.2018 2:52:08|8|8|8|8|kjnk|jkhnkj|jkhb|Putnicki|Tanja|0|0|0|0|||||0|||1.1.0001 0:00:00||0|0|Kreirana
+60684095|19.6.2018 2:52:23|44|8|8|8|ihjkh|jkhjk|hj|Putnicki|Tanja|0|0|0|0|||||0|||1.1.0001 0:00:00||0|0|Kreirana
+63238509|19.6.2018 3:15:29|8|8|8|8|8k|mlk|kl|Kombi|Elena|0|0|0|0||||Marija|0|Gorance||1.1.0001 0:00:00||0|0|Obradjena

@@ -15,7 +15,7 @@ namespace WebAPI.Controllers
         {
               foreach (Musterija kor in Musterije.musterije.Values)
               {
-                   if (kor.KorisnickoIme == korisnik.KorisnickoIme || kor.Lozinka==korisnik.Lozinka)
+                   if (kor.KorisnickoIme == korisnik.KorisnickoIme && kor.Lozinka==korisnik.Lozinka)
                    {
                         return true;
                    }
@@ -23,7 +23,7 @@ namespace WebAPI.Controllers
               }
               foreach (Dispecer d in Dispeceri.dispeceri.Values)
               {
-                  if (d.KorisnickoIme == korisnik.KorisnickoIme || d.Lozinka == korisnik.Lozinka)
+                  if (d.KorisnickoIme == korisnik.KorisnickoIme && d.Lozinka == korisnik.Lozinka)
                   {
                        return true;
                   }
@@ -31,7 +31,7 @@ namespace WebAPI.Controllers
               }
               foreach (Vozac v in Vozaci.vozaci.Values)
               {
-                  if (v.KorisnickoIme == korisnik.KorisnickoIme || v.Lozinka == korisnik.Lozinka)
+                  if (v.KorisnickoIme == korisnik.KorisnickoIme && v.Lozinka == korisnik.Lozinka)
                   {
                       return true;
                   }

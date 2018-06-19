@@ -1,4 +1,8 @@
-31923445|Marko|lala|Markan|Markovic|M| 12344352|06423213|marko@gmail.com|Vozac|222|2,2|1,3|33|Kralja Alfonsa 44|Banja Luka|78000|31923445|1999|234-M-345|34|Putnicki|False
-35772575|Ivana|ivka|Ivancica|Radusin|Z| 2323214|43543|iva@gmail.com|Vozac|4543|4543|345|34|Lalal|BL|78000|35772575|1996|344-I-456|232|Kombi|True
-24242277|Ranko|lolo|Rankan|Popovic|M| 3434|2323|ra@gmail.com|Vozac|3|5|5|5|Joj|Banja Luka|78000|24242277|1989|432-T-543|45|Kombi|False
-35113868|Maza|LALA|Mazica|sadas|Z| kmkl|87|asdsa@gmail.com|Vozac|7|8|0|9|sjadasd|j|jk|35113868|9|3|7|Kombi|True
+34160229|Marija|lala|Mariola|Poprzen|Z| 2312423|432434|ma@gmail.com|Vozac|352|2352|2352|5235|dfdsfsdfsd|agfasgfafga|fasfa|34160229|344325|5235|23532|Kombi|True
+51393439|Jovana|joca|Joca|Gric|Z| 23552352|23523|23523|Vozac|23532|5325|523523523|55232|sdfdsfdfdsf|dsfdsfsdf|sdfsdf|51393439|523523|523523|23532|Kombi|True
+375601|Kosta|sadas|Kole|Curcic|M| 45345|35324534|5345345|Vozac|435435|435345|34534|534543|asfdasfas|fasfas|f|375601|34534|53453|454534|Putnicki|True
+57566403|Ogi|5435|Ognjen|adsfsadf|M| asfasf|asfas|asfsa@gmail.com|Vozac|23432|23432432|4234|23432|faf|fasfas|afsas|57566403|afasf|asfas|0|Kombi|False
+38972574|Tarik|kjk|k|kjk|M| kmk|76|re@gmail.com|Vozac|23|312|12321|2321|sadas|dasd|sadsa|38972574|676|7687|68|Kombi|False
+1797691|Mitar|asdas|sdas|safas|Z| sfa|54235|re@gmail.com|Vozac|3523|3|3|3|sds|sdsa|sad|1797691|523|23523|35|Putnicki|True
+10818254|Igor|lolo|nsjnd|kjn|Z| jkkj|87|d@gmail.com|Vozac|87|7|7|7|jhjh|jhj||10818254|897|8|8|Putnicki|True
+16060410|Oklpp|sd|lkmk|km|Z| kkm|8|d@gmail.com|Vozac|2|33|33|3|3ada|asdas|sad|16060410|988|98|33|Kombi|False
