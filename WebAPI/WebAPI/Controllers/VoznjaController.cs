@@ -17,13 +17,13 @@ namespace WebAPI.Controllers
 
             if (Voznje.voznje != null)
             {
-                foreach (Voznja kor in Voznje.voznje.Values)
-                {
-                    if (kor.Dolazak.Adresa.UlicaIBroj == voznja.Dolazak.Adresa.UlicaIBroj)
-                    {
-                        return false;
-                    }
-                }
+                //foreach (Voznja kor in Voznje.voznje.Values)
+                //{
+                //    if (kor.Dolazak.Adresa.UlicaIBroj == voznja.Dolazak.Adresa.UlicaIBroj)
+                //    {
+                //        return false;
+                //    }
+                //}
                 SomeType s = new SomeType();
                 voznja.IdVoznje = s.GetHashCode();
                 voznja.DTPorudzbine = DateTime.Now;
@@ -42,7 +42,7 @@ namespace WebAPI.Controllers
                         }
                     }
                 }
-                else
+                else  //nikad nece uci jer uvijek dispecer ili musterija kreiraju/formiraju voznju
                 {
                     voznja.StatusVoznje = Enums.StatusVoznje.Prihvacena;
                 }
@@ -112,8 +112,8 @@ namespace WebAPI.Controllers
             return Voznje.voznje;
         }
 
-        
-        
+
+
 
         // PUT api/voznja/5
         public bool Put(int id, [FromBody]Voznja korisnik)
@@ -125,31 +125,189 @@ namespace WebAPI.Controllers
                     korisnik.TipAutaVoznje = kor.TipAutaVoznje;
                     korisnik.IdVoznje = kor.IdVoznje;
                     korisnik.DTPorudzbine = DateTime.Now;
-                    if (korisnik.MusterijaVoznja != null && kor.StatusVoznje != Enums.StatusVoznje.Otkazana)
+                    if (korisnik.StatusVoznje==Enums.StatusVoznje.Otkazana)     //*******************
                     {
-                        korisnik.StatusVoznje = Enums.StatusVoznje.Kreirana;
-                    }
-                    else if (korisnik.DispecerVoznja != null)
+                        korisnik.Dolazak = new Lokacija();
+                        korisnik.Dolazak.IdLok = kor.Dolazak.IdLok;
+                        korisnik.Dolazak.X = kor.Dolazak.X;
+                        korisnik.Dolazak.Y = kor.Dolazak.Y;
+                        korisnik.Dolazak.Adresa.IdAdr = kor.Dolazak.Adresa.IdAdr;
+                        korisnik.Dolazak.Adresa.UlicaIBroj = kor.Dolazak.Adresa.UlicaIBroj;
+                        korisnik.Dolazak.Adresa.NaseljenoMjesto = kor.Dolazak.Adresa.NaseljenoMjesto;
+                        korisnik.Dolazak.Adresa.PozivniBroj = kor.Dolazak.Adresa.PozivniBroj;
+                        korisnik.Odrediste = new Lokacija();
+                    } else if (korisnik.StatusVoznje == Enums.StatusVoznje.Kreirana)  //*******************
                     {
-                        korisnik.StatusVoznje = Enums.StatusVoznje.Formirana;
-                    }
-                    else if(korisnik.VozacVoznja!=null)
+                        if(korisnik.VozacVoznja==null && korisnik.DispecerVoznja==null)
+                        {
+                            if (kor.Komentar != null)
+                            {
+                                korisnik.Komentar = new Komentar();
+                                korisnik.Komentar = kor.Komentar;
+                            }
+                            else
+                            {
+                                korisnik.Komentar = new Komentar();
+                            }
+                            korisnik.Odrediste = new Lokacija();
+                        } else if (korisnik.VozacVoznja != null && korisnik.DispecerVoznja !=null)
+                        {
+                            korisnik.StatusVoznje = Enums.StatusVoznje.Obradjena;
+                            korisnik.MusterijaVoznja = kor.MusterijaVoznja;
+                            foreach (Vozac v in Vozaci.vozaci.Values)
+                            {
+                                if (v.KorisnickoIme == korisnik.VozacVoznja)
+                                {
+                                    v.Zauzet = true;
+                                    UpisIzmjenaTxtVozac(v);
+                                }
+                            }
+                            
+                            if (kor.Komentar != null)
+                            {
+                                korisnik.Komentar = new Komentar();
+                                korisnik.Komentar = kor.Komentar;
+                            }
+                            else
+                            {
+                                korisnik.Komentar = new Komentar();
+                            }
+                            korisnik.Dolazak = new Lokacija();
+                            korisnik.Dolazak.IdLok = kor.Dolazak.IdLok;
+                            korisnik.Dolazak.X = kor.Dolazak.X;
+                            korisnik.Dolazak.Y = kor.Dolazak.Y;
+                            korisnik.Dolazak.Adresa.IdAdr = kor.Dolazak.Adresa.IdAdr;
+                            korisnik.Dolazak.Adresa.UlicaIBroj = kor.Dolazak.Adresa.UlicaIBroj;
+                            korisnik.Dolazak.Adresa.NaseljenoMjesto = kor.Dolazak.Adresa.NaseljenoMjesto;
+                            korisnik.Dolazak.Adresa.PozivniBroj = kor.Dolazak.Adresa.PozivniBroj;
+                            korisnik.Odrediste = new Lokacija();
+                        }
+                    } else if (korisnik.StatusVoznje == Enums.StatusVoznje.Neuspjesna)     //*******************
                     {
-                        korisnik.StatusVoznje = Enums.StatusVoznje.Prihvacena;
-                    } else
-                    {
-                        korisnik.StatusVoznje = kor.StatusVoznje;
-                    }
+                        foreach (Vozac v in Vozaci.vozaci.Values)
+                        {
+                            if (v.KorisnickoIme == korisnik.VozacVoznja)
+                            {
+                                v.Zauzet = false;
+                                UpisIzmjenaTxtVozac(v);
+                            }
+                        }
+                        korisnik.MusterijaVoznja = kor.MusterijaVoznja;
+                        korisnik.DispecerVoznja = kor.DispecerVoznja;
+                        korisnik.Dolazak = new Lokacija();
+                        korisnik.Dolazak.IdLok = kor.Dolazak.IdLok;
+                        korisnik.Dolazak.X = kor.Dolazak.X;
+                        korisnik.Dolazak.Y = kor.Dolazak.Y;
+                        korisnik.Dolazak.Adresa.IdAdr = kor.Dolazak.Adresa.IdAdr;
+                        korisnik.Dolazak.Adresa.UlicaIBroj = kor.Dolazak.Adresa.UlicaIBroj;
+                        korisnik.Dolazak.Adresa.NaseljenoMjesto = kor.Dolazak.Adresa.NaseljenoMjesto;
+                        korisnik.Dolazak.Adresa.PozivniBroj = kor.Dolazak.Adresa.PozivniBroj;
+                        korisnik.Odrediste = new Lokacija();
 
-                    if (kor.Komentar != null)
+
+                    } else if (korisnik.StatusVoznje == Enums.StatusVoznje.Uspjesna)
                     {
-                        korisnik.Komentar = new Komentar();
-                        korisnik.Komentar = kor.Komentar;
-                    } else
+                        foreach (Vozac v in Vozaci.vozaci.Values)
+                        {
+                            if (v.KorisnickoIme == korisnik.VozacVoznja)
+                            {
+                                v.Zauzet = false;
+                                UpisIzmjenaTxtVozac(v);
+                            }
+                        }
+                        if (korisnik.Komentar == null)
+                        {
+                            if (kor.Komentar != null)
+                            {
+                                korisnik.Komentar = new Komentar();
+                                korisnik.Komentar = kor.Komentar;
+                            }
+                            else
+                            {
+                                korisnik.Komentar = new Komentar();
+                            }
+                        }
+
+                        if (korisnik.Iznos == 0)
+                        {
+                            if (kor.Iznos != 0)
+                            {
+                                
+                                korisnik.Iznos = kor.Iznos;
+                            }
+                        }
+                        if (korisnik.VozacVoznja == null)
+                        {
+                            if (kor.VozacVoznja != null)
+                            {
+
+                                korisnik.VozacVoznja = kor.VozacVoznja;
+                            }
+                        }
+                        korisnik.MusterijaVoznja = kor.MusterijaVoznja;
+                        korisnik.DispecerVoznja = kor.DispecerVoznja;
+                        korisnik.Dolazak = new Lokacija();
+                        korisnik.Dolazak.IdLok = kor.Dolazak.IdLok;
+                        korisnik.Dolazak.X = kor.Dolazak.X;
+                        korisnik.Dolazak.Y = kor.Dolazak.Y;
+                        korisnik.Dolazak.Adresa.IdAdr = kor.Dolazak.Adresa.IdAdr;
+                        korisnik.Dolazak.Adresa.UlicaIBroj = kor.Dolazak.Adresa.UlicaIBroj;
+                        korisnik.Dolazak.Adresa.NaseljenoMjesto = kor.Dolazak.Adresa.NaseljenoMjesto;
+                        korisnik.Dolazak.Adresa.PozivniBroj = kor.Dolazak.Adresa.PozivniBroj;
+                        if (korisnik.Odrediste == null)
+                        {
+                            if (kor.Odrediste != null)
+                            {
+                                korisnik.Odrediste = new Lokacija();
+                                korisnik.Odrediste = kor.Odrediste;
+                            }
+                            else
+                            {
+                                korisnik.Odrediste = new Lokacija();
+                            }
+                        }
+
+                    } else if (korisnik.StatusVoznje == Enums.StatusVoznje.Prihvacena)
                     {
-                        korisnik.Komentar = new Komentar();
+                        foreach (Vozac v in Vozaci.vozaci.Values)
+                        {
+                            if (v.KorisnickoIme == korisnik.VozacVoznja)
+                            {
+                                v.Zauzet = true;
+                                UpisIzmjenaTxtVozac(v);
+                            }
+                        }
+                        if (korisnik.Komentar == null)
+                        {
+                            if (kor.Komentar != null)
+                            {
+                                korisnik.Komentar = new Komentar();
+                                korisnik.Komentar = kor.Komentar;
+                            }
+                            else
+                            {
+                                korisnik.Komentar = new Komentar();
+                            }
+                        }
+                        if (korisnik.DispecerVoznja == null)
+                        {
+                            if (kor.DispecerVoznja != null)
+                            {
+
+                                korisnik.DispecerVoznja = kor.DispecerVoznja;
+                            }
+                        }
+                        korisnik.MusterijaVoznja = kor.MusterijaVoznja;
+                        korisnik.Dolazak = new Lokacija();
+                        korisnik.Dolazak.IdLok = kor.Dolazak.IdLok;
+                        korisnik.Dolazak.X = kor.Dolazak.X;
+                        korisnik.Dolazak.Y = kor.Dolazak.Y;
+                        korisnik.Dolazak.Adresa.IdAdr = kor.Dolazak.Adresa.IdAdr;
+                        korisnik.Dolazak.Adresa.UlicaIBroj = kor.Dolazak.Adresa.UlicaIBroj;
+                        korisnik.Dolazak.Adresa.NaseljenoMjesto = kor.Dolazak.Adresa.NaseljenoMjesto;
+                        korisnik.Dolazak.Adresa.PozivniBroj = kor.Dolazak.Adresa.PozivniBroj;
+                        korisnik.Odrediste = new Lokacija();
                     }
-                    korisnik.Odrediste = new Lokacija();
                     Voznje.voznje.Remove(kor.IdVoznje);
                     Voznje.voznje.Add(korisnik.IdVoznje, korisnik);
                     UpisIzmjenaTxt(korisnik);
@@ -192,3 +350,51 @@ namespace WebAPI.Controllers
         }
     }
 }
+
+
+
+//// PUT api/voznja/5
+//public bool Put(int id, [FromBody]Voznja korisnik)
+//{
+//    foreach (Voznja kor in Voznje.voznje.Values)
+//    {
+//        if (kor.IdVoznje == id)
+//        {
+//            korisnik.TipAutaVoznje = kor.TipAutaVoznje;
+//            korisnik.IdVoznje = kor.IdVoznje;
+//            korisnik.DTPorudzbine = DateTime.Now;
+//            if (korisnik.MusterijaVoznja != null && kor.StatusVoznje != Enums.StatusVoznje.Otkazana)
+//            {
+//                korisnik.StatusVoznje = Enums.StatusVoznje.Kreirana;
+//            }
+//            else if (korisnik.DispecerVoznja != null)
+//            {
+//                korisnik.StatusVoznje = Enums.StatusVoznje.Formirana;
+//            }
+//            else if (korisnik.VozacVoznja != null)
+//            {
+//                korisnik.StatusVoznje = Enums.StatusVoznje.Prihvacena;
+//            }
+//            else
+//            {
+//                korisnik.StatusVoznje = kor.StatusVoznje;
+//            }
+
+//            if (kor.Komentar != null)
+//            {
+//                korisnik.Komentar = new Komentar();
+//                korisnik.Komentar = kor.Komentar;
+//            }
+//            else
+//            {
+//                korisnik.Komentar = new Komentar();
+//            }
+//            korisnik.Odrediste = new Lokacija();
+//            Voznje.voznje.Remove(kor.IdVoznje);
+//            Voznje.voznje.Add(korisnik.IdVoznje, korisnik);
+//            UpisIzmjenaTxt(korisnik);
+//            return true;
+//        }
+//    }
+//    return false;
+//}

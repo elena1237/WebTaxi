@@ -1,8 +1,9 @@
-34160229|Marija|lala|Mariola|Poprzen|Z| 2312423|432434|ma@gmail.com|Vozac|352|2352|2352|5235|dfdsfsdfsd|agfasgfafga|fasfa|34160229|344325|5235|23532|Kombi|True
-51393439|Jovana|joca|Joca|Gric|Z| 23552352|23523|23523|Vozac|23532|5325|523523523|55232|sdfdsfdfdsf|dsfdsfsdf|sdfsdf|51393439|523523|523523|23532|Kombi|True
-375601|Kosta|sadas|Kole|Curcic|M| 45345|35324534|5345345|Vozac|435435|435345|34534|534543|asfdasfas|fasfas|f|375601|34534|53453|454534|Putnicki|True
-57566403|Ogi|5435|Ognjen|adsfsadf|M| asfasf|asfas|asfsa@gmail.com|Vozac|23432|23432432|4234|23432|faf|fasfas|afsas|57566403|afasf|asfas|0|Kombi|False
-38972574|Tarik|kjk|k|kjk|M| kmk|76|re@gmail.com|Vozac|23|312|12321|2321|sadas|dasd|sadsa|38972574|676|7687|68|Kombi|False
-1797691|Mitar|asdas|sdas|safas|Z| sfa|54235|re@gmail.com|Vozac|3523|3|3|3|sds|sdsa|sad|1797691|523|23523|35|Putnicki|True
-10818254|Igor|lolo|nsjnd|kjn|Z| jkkj|87|d@gmail.com|Vozac|87|7|7|7|jhjh|jhj||10818254|897|8|8|Putnicki|True
-16060410|Oklpp|sd|lkmk|km|Z| kkm|8|d@gmail.com|Vozac|2|33|33|3|3ada|asdas|sad|16060410|988|98|33|Kombi|False
+31307802|Ilija|taxi1|Ika|Pavlovic|M| 1903233423|064324343|ika@gmail.com|Vozac|2|2|2|2|Fruskogorska 7|Novi Sad |21000|31307802|1999|345-I-343|90|Kombi|True
+58705115|Petra|maja|Petrica|Marc|Z| 23434532|0622323|pe@gmail.com|Vozac|8|8|8|8|Vrtojba 9|Nova Gorica|34000|58705115|1989|345-P-343|89|Kombi|True
+15556699|Micko|garage78|Milutin|Kuzet|M| 16119893882|066430111|milutin.kuzet@gmail.com|Vozac|34|6,2|2,3|78|Gorana Radulovica Bimbe 5|Banja Luka|78000|15556699|2005|344-M-123|78|Putnicki|True
+37711035|Mirko|sadsa|Mirkan|Lolic|M| 98787|978987|mi@gmail.com|Vozac|878|9|9|9|Krajiskih Brigada 8|Banja Luka |78000|37711035|2000|890-K-789|99|Putnicki|True
+36604427|Luka|jaja|Lukec|Ponjevic|M| 87687|9790790|lu@gmail.com|Vozac|878|8|8|8|Lipe Cvatu 89|Novi Sad|21000|36604427|87897|800-L-989|56|Putnicki|True
+59010877|Halid|koko|kkkk|kkkk|Z| kkkk|989|98@gmail.com|Vozac|98|9|9|9|iuijhjhj|kjhjnkk|k|59010877|989|8989|89|Kombi|True
+8831419|Igor|ijIJIkj|oijkj|ijki|Z| jkjk|76|877@gmail.com|Vozac|878|87|87|8|hhjjhjhbj|jkh|jj|8831419|88|787|8|Kombi|False
+32932495|Iva|iva|Ivka|Ponjevic|Z| 90898|897878787|iva@gmail.com|Vozac|878|87|87|8|UHUH|UH|U|32932495|2000|89798|898|Kombi|True
+3140894|Rastko|sava|Rale|Nemanjic|M| 8989890|9898009898|808@gmail.com|Vozac|9|8|8|8|iuuuj|iui|ioji|3140894|9|9|8|Putnicki|False

@@ -1,7 +1,13 @@
-54284939|19.6.2018 2:23:24|7|7|7|7|jknbj|kjnjkn|jknj|Kombi||0|0|0|0||||Ilija|0|Gorance||1.1.0001 0:00:00||0|0|Formirana
-49582139|19.6.2018 2:45:07|5|5|5|5|sadfsaf|uhuihu|huhihih|Putnicki|Elena|0|0|0|0||||Igor|0|Majce||1.1.0001 0:00:00||0|0|Obradjena
-17189561|19.6.2018 2:45:17|7|7|7|7|ujhjjk|kjbj|kjjk|Putnicki|Elena|0|0|0|0||||Mitar|0|Gorance||1.1.0001 0:00:00||0|0|Obradjena
-35567111|19.6.2018 2:45:34|678899|9|9|99|oakfjdka|klkljkjkj|kkkjkj|Kombi|Elena|0|0|0|0||||Jovana|0|Majce||1.1.0001 0:00:00||0|0|Obradjena
-17274517|19.6.2018 2:52:08|8|8|8|8|kjnk|jkhnkj|jkhb|Putnicki|Tanja|0|0|0|0|||||0|||1.1.0001 0:00:00||0|0|Kreirana
-60684095|19.6.2018 2:52:23|44|8|8|8|ihjkh|jkhjk|hj|Putnicki|Tanja|0|0|0|0|||||0|||1.1.0001 0:00:00||0|0|Kreirana
-63238509|19.6.2018 3:15:29|8|8|8|8|8k|mlk|kl|Kombi|Elena|0|0|0|0||||Marija|0|Gorance||1.1.0001 0:00:00||0|0|Obradjena
+6597250|19.6.2018 23:39:18|7|7|7|7|Alekse Santica 89|Novi Sad|21000|Putnicki||0|0|0|0||||Mirko|0|Gorance||1.1.0001 0:00:00||0|0|Formirana
+53442835|19.6.2018 23:43:34|7|7|7|7|Cao Cao 89|NS|21000|Kombi||0|0|0|0||||Petra|0|Majce||1.1.0001 0:00:00||0|0|Formirana
+10828717|19.6.2018 23:44:47|90|8|8|8|8|jkjkjn|kjnkjnk|Putnicki||0|0|0|0||||Micko|0|Majce||1.1.0001 0:00:00||0|0|Formirana
+9227732|19.6.2018 23:45:25|7777|7|7|77|Avionska 78|Novi Sad|21000|Kombi||0|0|0|0||||Halid|0|Majce||1.1.0001 0:00:00||0|0|Formirana
+56128087|19.6.2018 23:45:53|77|8|8|8|Jabukina 45|Banja Luka |78000|Kombi||0|0|0|0||||Ilija|0|Majce||1.1.0001 0:00:00||0|0|Formirana
+37261114|19.6.2018 23:46:40|90|87|7|878|Dinjina 89|Novi Sad|21000|Putnicki||0|0|0|0||||Luka|0|Majce||1.1.0001 0:00:00||0|0|Formirana
+21442473|20.6.2018 0:18:53|8|8|8|8|Vojvode Momcila 23|Banja Luka|78000|Putnicki|Lazo|89|89|89|89|Patre 5|Banja Luka|78000|Ivica|5|Gorance|Brzo je bilo,bravo.|1.1.2018 0:00:00|Lazo|21442473|4|Uspjesna
+18999103|19.6.2018 23:53:01|7|7|7|7|Krajiskog Korpusa 138|Banja Luka|78000|Kombi|Lazo|0|0|0|0|||||0||Ipak ne treba|19.6.2018 23:55:00|Lazo|18999103|2|Otkazana
+64604114|20.6.2018 1:06:09|7|7|7|7|jaksjdka|kj|kjik|Putnicki|Lazo|0|0|0|0|||||0|||1.1.0001 0:00:00||0|0|Kreirana
+45363346|20.6.2018 1:06:20|888|88|8|9|ujjbj|jnj|mn jmn |Putnicki|Lazo|0|0|0|0|||||0|||1.1.0001 0:00:00||0|0|Kreirana
+12781633|20.6.2018 1:06:34|878|7|7|8|JKNBJN|KNKNK|NKN|Putnicki|Lazo|0|0|0|0|||||0|||1.1.0001 0:00:00||0|0|Kreirana
+31395883|20.6.2018 1:06:56|6|8|9|56|KJJKK|jkmkkmk|kjmkm|Kombi|Lazo|0|0|0|0|||||0|||1.1.0001 0:00:00||0|0|Kreirana
+12053474|20.6.2018 1:19:25|8788|88|98|9|ihi|ijik|ijii|Kombi|Lazo|0|0|0|0||||Iva|0|||1.1.0001 0:00:00||0|0|Prihvacena
