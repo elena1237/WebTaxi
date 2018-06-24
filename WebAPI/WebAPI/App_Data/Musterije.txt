@@ -1,2 +1,2 @@
-51452601|Majolina|lala|Maja|Djordjevic|Z| 040499632432|0641423432|majica@gmail.com|Musterija|True
+51452601|Majolina|lala|Maja|Djordjevic|Z| 040499632432|0641423432|majica@gmail.com|Musterija|False
 59045719|Tanjci|mazica|Tanja|Radojcic|Z| 290499634324|043543|tanjica@gmail.com|Musterija|True

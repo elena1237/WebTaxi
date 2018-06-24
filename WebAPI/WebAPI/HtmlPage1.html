@@ -1712,46 +1712,110 @@
             });
 
 
-            $(document).on('click', '#dispecerDodajVozaca', function () {  // za dispecera  STA JE OVO?
+            $(document).on('click', '#dispecerDodajVozaca', function () {  // za dispecera  dodavanje vozaca na voznju,5 najblizih u zavisnosti od lokacije musterije
                 let fired_button2 = $(this).val();
-
                 localStorage.setItem("dodajVozaca", fired_button2);
+                let x1; //musterija
+                let y1;
+               
+                let udaljenost;
+
                 let type;
-                $.get("/api/Voznja", function (data, status) {
-                    for (voznja in data) {
-                        if (data[voznja].IdVoznje == fired_button2) {
-                            type = data[voznja].TipAutaVoznje;
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/api/Voznja',
+                    async: false,
+                    success: function (data) {
+                        for (voznja in data) {
+                            if (data[voznja].IdVoznje == fired_button2) {
+                                type = data[voznja].TipAutaVoznje;
+                                x1 = data[voznja].Dolazak.X;
+                                y1 = data[voznja].Dolazak.Y;
+                            }
                         }
                     }
                 });
 
-                $.get("/api/Vozac", function (data, status) {
-                    let pom = type;
-                    let koliko = 0;
-                    let table = "<table border='1'><tr><td><select id=\"vozac1\" name=\"VozacVoznja\"> ";
+                
 
-                    for (driver in data) {
-                        if (data[driver].Automobil.TipAuta == pom && data[driver].Zauzet == false) {
-                            table += "<option>" + data[driver].KorisnickoIme + "</option>";
-                            koliko++;
+
+
+                //$.get("/api/Vozac", function (data, status) {
+
+                    $.ajax({
+                        type: 'GET',
+                        url: '/api/Vozac',
+                        async: false,
+                        success: function (data) {
+
+                            let pom = type;
+                            let koliko = 0;
+                            let listaUdaljenosti = [];
+                            let udaljenost;
+                            let table = "<table border='1'><tr><td><select id=\"vozac1\" name=\"VozacVoznja\">";
+                            if (Object.keys(data).length > 5) {
+
+
+                                for (driver1 in data) {
+                                    let oduzetX = x1 - data[driver1].Lokacija.X;
+                                    let oduzetY = y1 - data[driver1].Lokacija.Y;
+                                    udaljenost = Math.sqrt(Math.pow(oduzetX, 2) + Math.pow(oduzetY, 2));
+
+
+                                    listaUdaljenosti.push({
+                                        'udaljenost': udaljenost,
+                                        'vozac': data[driver1]
+                                    });
+                                }
+
+                                listaUdaljenosti.sort(function (a, b) {
+                                    return a.udaljenost - b.udaljenost;
+                                });
+
+
+                                let brojac = 0;
+                                for (u in listaUdaljenosti) {
+                                    brojac++;
+                                    for (driver in data) {
+                                        if (listaUdaljenosti[u].vozac.Id == data[driver].Id) {
+                                            if (data[driver].Automobil.TipAuta == pom && data[driver].Zauzet == false) {  //5 najblizih u zavisnosti od lokacije musterije
+                                                table += "<option>" + data[driver].KorisnickoIme + "</option>";
+                                                koliko++;
+                                            }
+                                        }
+                                    }
+                                    if (brojac == 5) {
+                                        break;
+                                    }
+                                }
+
+                            } else {
+
+
+                                for (driver in data) {
+                                    if (data[driver].Automobil.TipAuta == pom && data[driver].Zauzet == false) {  //ako ima manje od 5 vozaca ukupno
+                                        table += "<option>" + data[driver].KorisnickoIme + "</option>";
+                                        koliko++;
+                                    }
+
+                                }
+                            }
+                            table += "</select></td></tr></table><button id=\"dispecerDodajVozaca2\" type=\"button\"><b>Dodaj voznju</b></button>";
+
+                            if (koliko == 0) {
+                                alert('Trenutno nema slobodnih vozača sa traženim automobilom.');
+                                $(location).attr('href', 'HtmlPage1.html');
+                            } else {
+                                $("#DodajVozacaDispecer").append(table);
+                            }
                         }
-
-                    }
-                    table += "</select></td></tr></table><button id=\"dispecerDodajVozaca2\" type=\"button\"><b>Dodaj voznju</b></button>";
-
-                    if (koliko == 0) {
-                        alert('Trenutno nema slobodnih vozača sa traženim automobilom.');
-                        $(location).attr('href', 'HtmlPage1.html');
-                    } else {
-                        $("#DodajVozacaDispecer").append(table);
-                    }
-
                 });
 
             });
 
 
-            $(document).on('click', '#dispecerDodajVozaca2', function () {   //NEMAM POJMA STA JE OVO
+            $(document).on('click', '#dispecerDodajVozaca2', function () {   //Znam... za dodavanje vozaca voznji
                 let id3 = localStorage.getItem("dodajVozaca");
                 $("#PrikaziVoznjeDispecerSve").hide();
                 $("#PrikaziVoznjeDispecer").hide();
@@ -1761,7 +1825,6 @@
                 $("#PrikazVozacaZaBan").hide();
                 $("#PrikaziFiltriraneVoznjeDisp").hide();
                 $("#PrikaziFiltriraneVoznjeSveDisp").hide();
-
                 $("#DodajVozacaDispecer").hide();
 
 
