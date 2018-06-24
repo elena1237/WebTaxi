@@ -25,9 +25,14 @@ namespace WebAPI.Controllers
                 //    }
                 //}
                 SomeType s = new SomeType();
+                SomeType s1 = new SomeType();
+                SomeType s2 = new SomeType();
                 voznja.IdVoznje = s.GetHashCode();
                 voznja.DTPorudzbine = DateTime.Now;
-                if(voznja.MusterijaVoznja!=null)
+                voznja.Dolazak.Adresa.IdAdr = s1.GetHashCode();
+                voznja.Dolazak.IdLok = s2.GetHashCode();
+                
+                if (voznja.MusterijaVoznja!=null)
                 {
                     voznja.StatusVoznje = Enums.StatusVoznje.Kreirana;
                 }else if(voznja.DispecerVoznja!=null)
@@ -88,6 +93,7 @@ namespace WebAPI.Controllers
             {
                 string upis = k.IdVoznje.ToString() + '|' + k.DTPorudzbine.ToString() + '|' + k.Dolazak.IdLok.ToString() + '|' + k.Dolazak.X.ToString() + '|' + k.Dolazak.Y.ToString() + '|' + k.Dolazak.Adresa.IdAdr.ToString() + '|' + k.Dolazak.Adresa.UlicaIBroj + '|' + k.Dolazak.Adresa.NaseljenoMjesto + '|' + k.Dolazak.Adresa.PozivniBroj + '|' + k.TipAutaVoznje + '|' + k.MusterijaVoznja + '|' + k.Odrediste.IdLok.ToString() + '|' + k.Odrediste.X.ToString() + '|' + k.Odrediste.Y.ToString() + '|' + k.Odrediste.Adresa.IdAdr.ToString() + '|' + k.Odrediste.Adresa.UlicaIBroj + '|' + k.Odrediste.Adresa.NaseljenoMjesto + '|' + k.Odrediste.Adresa.PozivniBroj + '|'  + k.VozacVoznja + '|' + k.Iznos.ToString() +'|' + k.DispecerVoznja + '|' +k.Komentar.Opis  + '|' + k.Komentar.DTObjave.ToString() + '|' + k.Komentar.KorImeKorisnikKomentar + '|' + k.Komentar.IdVoznjaKomentar.ToString() + '|' + k.Komentar.Ocjena.ToString() + '|' + k.StatusVoznje;
                 tw.WriteLine(upis);
+                //tw.Flush();
             }
             stream.Close();
         }
@@ -124,7 +130,7 @@ namespace WebAPI.Controllers
                 {
                     korisnik.TipAutaVoznje = kor.TipAutaVoznje;
                     korisnik.IdVoznje = kor.IdVoznje;
-                    korisnik.DTPorudzbine = DateTime.Now;
+                    korisnik.DTPorudzbine = kor.DTPorudzbine;
                     if (korisnik.StatusVoznje==Enums.StatusVoznje.Otkazana)     //*******************
                     {
                         korisnik.Dolazak = new Lokacija();
@@ -136,6 +142,8 @@ namespace WebAPI.Controllers
                         korisnik.Dolazak.Adresa.NaseljenoMjesto = kor.Dolazak.Adresa.NaseljenoMjesto;
                         korisnik.Dolazak.Adresa.PozivniBroj = kor.Dolazak.Adresa.PozivniBroj;
                         korisnik.Odrediste = new Lokacija();
+                        
+
                     } else if (korisnik.StatusVoznje == Enums.StatusVoznje.Kreirana)  //*******************
                     {
                         if(korisnik.VozacVoznja==null && korisnik.DispecerVoznja==null)
@@ -341,7 +349,7 @@ namespace WebAPI.Controllers
             {
                 if (lines[i].Contains(k.Id.ToString()))
                 {
-                    allString += k.Id.ToString() + '|' + k.KorisnickoIme + '|' + k.Lozinka + '|' + k.Ime + '|' + k.Prezime + '|' + k.Pol + '|' + k.JMBG + '|' + k.KontaktTelefon + '|' + k.Email + '|' + k.Uloga + '|' + k.Lokacija.IdLok.ToString() + '|' + k.Lokacija.X.ToString() + '|' + k.Lokacija.Y.ToString() + '|' + k.Lokacija.Adresa.IdAdr.ToString() + '|' + k.Lokacija.Adresa.UlicaIBroj + '|' + k.Lokacija.Adresa.NaseljenoMjesto + '|' + k.Lokacija.Adresa.PozivniBroj + '|' + k.Automobil.IdVozaca.ToString() + '|' + k.Automobil.Godiste + '|' + k.Automobil.Registracija + '|' + k.Automobil.BrojVozila.ToString() + '|' + k.Automobil.TipAuta + '|' + k.Zauzet.ToString();
+                    allString += k.Id.ToString() + '|' + k.KorisnickoIme + '|' + k.Lozinka + '|' + k.Ime + '|' + k.Prezime + '|' + k.Pol + '|' + k.JMBG + '|' + k.KontaktTelefon + '|' + k.Email + '|' + k.Uloga + '|' + k.Lokacija.IdLok.ToString() + '|' + k.Lokacija.X.ToString() + '|' + k.Lokacija.Y.ToString() + '|' + k.Lokacija.Adresa.IdAdr.ToString() + '|' + k.Lokacija.Adresa.UlicaIBroj + '|' + k.Lokacija.Adresa.NaseljenoMjesto + '|' + k.Lokacija.Adresa.PozivniBroj + '|' + k.Automobil.IdVozaca.ToString() + '|' + k.Automobil.Godiste + '|' + k.Automobil.Registracija + '|' + k.Automobil.BrojVozila.ToString() + '|' + k.Automobil.TipAuta + '|' + k.Zauzet.ToString() + '|' + k.Banovan.ToString();
                     lines[i] = allString;
                 }
             }
@@ -353,48 +361,3 @@ namespace WebAPI.Controllers
 
 
 
-//// PUT api/voznja/5
-//public bool Put(int id, [FromBody]Voznja korisnik)
-//{
-//    foreach (Voznja kor in Voznje.voznje.Values)
-//    {
-//        if (kor.IdVoznje == id)
-//        {
-//            korisnik.TipAutaVoznje = kor.TipAutaVoznje;
-//            korisnik.IdVoznje = kor.IdVoznje;
-//            korisnik.DTPorudzbine = DateTime.Now;
-//            if (korisnik.MusterijaVoznja != null && kor.StatusVoznje != Enums.StatusVoznje.Otkazana)
-//            {
-//                korisnik.StatusVoznje = Enums.StatusVoznje.Kreirana;
-//            }
-//            else if (korisnik.DispecerVoznja != null)
-//            {
-//                korisnik.StatusVoznje = Enums.StatusVoznje.Formirana;
-//            }
-//            else if (korisnik.VozacVoznja != null)
-//            {
-//                korisnik.StatusVoznje = Enums.StatusVoznje.Prihvacena;
-//            }
-//            else
-//            {
-//                korisnik.StatusVoznje = kor.StatusVoznje;
-//            }
-
-//            if (kor.Komentar != null)
-//            {
-//                korisnik.Komentar = new Komentar();
-//                korisnik.Komentar = kor.Komentar;
-//            }
-//            else
-//            {
-//                korisnik.Komentar = new Komentar();
-//            }
-//            korisnik.Odrediste = new Lokacija();
-//            Voznje.voznje.Remove(kor.IdVoznje);
-//            Voznje.voznje.Add(korisnik.IdVoznje, korisnik);
-//            UpisIzmjenaTxt(korisnik);
-//            return true;
-//        }
-//    }
-//    return false;
-//}

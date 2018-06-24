@@ -18,6 +18,37 @@ namespace WebAPI.Controllers
             {
                 if (kor.Id == id)
                 {
+                    if(korisnik.KorisnickoIme==null)
+                    {
+                        korisnik.KorisnickoIme = kor.KorisnickoIme;
+                    }
+                    if (korisnik.Lozinka == null)
+                    {
+                        korisnik.Lozinka = kor.Lozinka;
+                    }
+                    if (korisnik.Ime == null)
+                    {
+                        korisnik.Ime = kor.Ime;
+                    }
+                    if (korisnik.Prezime == null)
+                    {
+                        korisnik.Prezime = kor.Prezime;
+                    }
+                    korisnik.Pol = kor.Pol;
+                    if (korisnik.JMBG == null)
+                    {
+                        korisnik.JMBG = kor.JMBG;
+                    }
+                    if (korisnik.Email == null)
+                    {
+                        korisnik.Email = kor.Email;
+                    }
+                    if (korisnik.KontaktTelefon == null)
+                    {
+                        korisnik.KontaktTelefon = kor.KontaktTelefon;
+                    }
+                    korisnik.Uloga = kor.Uloga;
+
                     Musterije.musterije.Remove(kor.Id);
                     Musterije.musterije.Add(korisnik.Id, korisnik);
                     UpisIzmjenaTxt(korisnik);
@@ -36,7 +67,7 @@ namespace WebAPI.Controllers
             {
                 if (lines[i].Contains(k.Id.ToString()))
                 {
-                    allString += k.Id.ToString() + '|' + k.KorisnickoIme + '|' + k.Lozinka + '|' + k.Ime + '|' + k.Prezime + '|' + k.Pol + '|' + k.JMBG + '|' + k.KontaktTelefon + '|' + k.Email + '|' + k.Uloga;
+                    allString += k.Id.ToString() + '|' + k.KorisnickoIme + '|' + k.Lozinka + '|' + k.Ime + '|' + k.Prezime + '|' + k.Pol + '|' + k.JMBG + '|' + k.KontaktTelefon + '|' + k.Email + '|' + k.Uloga + '|' + k.Banovan.ToString();
                     lines[i] = allString;
                 }
             }
@@ -45,9 +76,19 @@ namespace WebAPI.Controllers
         }
 
 
+        // GET api/musterija
+        public Dictionary<int, Musterija> Get()
+        {
+            return Musterije.musterije;
+        }
 
+        // GET api/musterija/5
+        public Musterija Get(int id)
+        {
+            return Musterije.musterije[id];
+        }
 
-        // POST api/post
+        // POST api/musterija
         public bool Post([FromBody]Musterija korisnik)
         {
 
@@ -89,7 +130,7 @@ namespace WebAPI.Controllers
             FileStream stream = new FileStream(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Musterije.txt", FileMode.Append);
             using (StreamWriter tw = new StreamWriter(stream))
             {
-                string upis = k.Id.ToString() + '|' + k.KorisnickoIme + '|' + k.Lozinka + '|' + k.Ime + '|' + k.Prezime + '|' + k.Pol + '|' + k.JMBG + '|' + k.KontaktTelefon + '|' + k.Email + '|' + k.Uloga;
+                string upis = k.Id.ToString() + '|' + k.KorisnickoIme + '|' + k.Lozinka + '|' + k.Ime + '|' + k.Prezime + '|' + k.Pol + '|' + k.JMBG + '|' + k.KontaktTelefon + '|' + k.Email + '|' + k.Uloga + '|' + k.Banovan.ToString();
                 tw.WriteLine(upis);
             }
             stream.Close();

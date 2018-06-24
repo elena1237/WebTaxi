@@ -12,9 +12,10 @@ namespace WebAPI.Models
         public Lokacija Lokacija { get; set; }
         public Automobil Automobil { get; set; }
         public bool Zauzet { get; set; }
+        
 
 
-        public Vozac(int i, string k, string l, string ime, string p, Pol po, string jmbg, string kont, string ema, Uloga ul,Lokacija lo,Automobil aut,bool zauzet)
+        public Vozac(int i, string k, string l, string ime, string p, Pol po, string jmbg, string kont, string ema, Uloga ul,Lokacija lo,Automobil aut,bool zauzet,bool banovan)
         {
             this.Id = i;
             this.KorisnickoIme = k;
@@ -48,6 +49,7 @@ namespace WebAPI.Models
             this.Lokacija = lo;
             this.Automobil = aut;
             this.Zauzet = zauzet;
+            this.Banovan = banovan;
         }
     }
 }

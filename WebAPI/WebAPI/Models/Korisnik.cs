@@ -18,10 +18,10 @@ namespace WebAPI.Models
         public string KontaktTelefon { get; set; }
         public string Email { get; set; }
         public Uloga Uloga { get; set; }
-
-        public List<Voznja> listaVoznji {get;set; }
-        //<td>${('.ChangeButtonDIV').append('<input type="button" id="izmjeniVoznja"><b>Izmjeni voznju</b></button>')}</td>
-        public Korisnik() { }
+        public bool Banovan { get; set; }
+        //public List<Voznja> listaVoznji {get;set; }
+        
+        public Korisnik() { Banovan = false; }
         public Korisnik(int i,string k, string l,string ime,string p,Pol po,string jmbg,string kont,string ema,Uloga ul)
         {
             this.Id = i;
@@ -53,7 +53,7 @@ namespace WebAPI.Models
             {
                 this.Uloga = Uloga.Vozac;
             }
-            listaVoznji = new List<Voznja>();
+            //listaVoznji = new List<Voznja>();
 
         }
     }

@@ -1,4 +1,2 @@
-28137373|Elena|kako|Elica|sadsa|Z| hello|asdas|djes@gmail.com|Musterija
-64535838|Tanja|mazica|mmmmmmmmm|sadasdsadsads|Z|101100100101001|0643432|tanja@gmail.com|Musterija
-43844556|Maja|lala|Majica|klklkl|Z| 040499623123|6756765|dfd@gmail.com|Musterija
-28756230|Lazo|linija|sadas|sadsa|M|sadsadas|dfgdfgh|ffd@gmail.com|Musterija
+51452601|Majolina|lala|Maja|Djordjevic|Z| 040499632432|0641423432|majica@gmail.com|Musterija|True
+59045719|Tanjci|mazica|Tanja|Radojcic|Z| 290499634324|043543|tanjica@gmail.com|Musterija|True

@@ -45,7 +45,7 @@ namespace WebAPI.Models
                 }
 
 
-                Musterija k = new Musterija(Int32.Parse(tokens[0]), tokens[1], tokens[2], tokens[3], tokens[4], pol, tokens[6], tokens[7], tokens[8], uloga);
+                Musterija k = new Musterija(Int32.Parse(tokens[0]), tokens[1], tokens[2], tokens[3], tokens[4], pol, tokens[6], tokens[7], tokens[8], uloga, bool.Parse(tokens[10]));
                 musterije.Add(k.Id, k);
             }
             sr.Close();

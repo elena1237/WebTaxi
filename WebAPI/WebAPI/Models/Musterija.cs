@@ -9,8 +9,9 @@ namespace WebAPI.Models
     public class Musterija : Korisnik
     {
         public Musterija() { }
+        
 
-        public Musterija(int i, string k, string l, string ime, string p, Pol po, string jmbg, string kont, string ema, Uloga ul)
+        public Musterija(int i, string k, string l, string ime, string p, Pol po, string jmbg, string kont, string ema, Uloga ul,bool banovan)
         {
             this.Id = i;
             this.KorisnickoIme = k;
@@ -41,7 +42,7 @@ namespace WebAPI.Models
             {
                 this.Uloga = Uloga.Vozac;
             }
-
+            this.Banovan = banovan;
         }
 
     }
