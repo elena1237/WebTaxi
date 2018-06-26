@@ -20,10 +20,15 @@ namespace WebAPI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            Musterije users = new Musterije(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Musterije.txt");
-            Dispeceri disp = new Dispeceri(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Dispeceri.txt");
-            Vozaci drivers = new Vozaci(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Vozaci.txt");
-            Voznje rides = new Voznje(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Voznje.txt");
+            Musterije users = new Musterije("~/App_Data/Musterije.txt");
+            Dispeceri disp = new Dispeceri("~/App_Data/Dispeceri.txt");
+            Vozaci drivers = new Vozaci("~/App_Data/Vozaci.txt");
+            Voznje rides = new Voznje("~/App_Data/Voznje.txt");
+           
+            // Musterije users = new Musterije(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Musterije.txt");
+            //Dispeceri disp = new Dispeceri(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Dispeceri.txt");
+            //Vozaci drivers = new Vozaci(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Vozaci.txt");
+            //Voznje rides = new Voznje(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Voznje.txt");
 
         }
     }

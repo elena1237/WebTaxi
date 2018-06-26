@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web.Hosting;
 using System.Web.Http;
 using WebAPI.Models;
 
@@ -48,6 +49,7 @@ namespace WebAPI.Controllers
                         korisnik.KontaktTelefon = kor.KontaktTelefon;
                     }
                     korisnik.Uloga = kor.Uloga;
+                    
 
                     Musterije.musterije.Remove(kor.Id);
                     Musterije.musterije.Add(korisnik.Id, korisnik);
@@ -61,7 +63,9 @@ namespace WebAPI.Controllers
 
         private void UpisIzmjenaTxt(Musterija k)
         {
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Musterije.txt");
+            string path = "~/App_Data/Musterije.txt";
+            path = HostingEnvironment.MapPath(path);
+            string[] lines = System.IO.File.ReadAllLines(path);
             string allString = "";
             for (int i = 0; i < lines.Length; i++)
             {
@@ -71,7 +75,7 @@ namespace WebAPI.Controllers
                     lines[i] = allString;
                 }
             }
-            System.IO.File.WriteAllLines(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Musterije.txt", lines);
+            System.IO.File.WriteAllLines(path, lines);
 
         }
 
@@ -127,7 +131,10 @@ namespace WebAPI.Controllers
 
         private void UpisTxt(Musterija k)
         {
-            FileStream stream = new FileStream(@"C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\App_Data\Musterije.txt", FileMode.Append);
+            string path = "~/App_Data/Musterije.txt";
+            path = HostingEnvironment.MapPath(path);
+
+            FileStream stream = new FileStream(path, FileMode.Append);
             using (StreamWriter tw = new StreamWriter(stream))
             {
                 string upis = k.Id.ToString() + '|' + k.KorisnickoIme + '|' + k.Lozinka + '|' + k.Ime + '|' + k.Prezime + '|' + k.Pol + '|' + k.JMBG + '|' + k.KontaktTelefon + '|' + k.Email + '|' + k.Uloga + '|' + k.Banovan.ToString();
