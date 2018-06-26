@@ -123,7 +123,18 @@ namespace WebAPI.Controllers
                     }
                     korisnik.Uloga = kor.Uloga;
 
-                    if (korisnik.Lokacija.X == 0)
+                    if (korisnik.Lokacija == null)
+                    {
+                        if (kor.Lokacija != null)
+                        {
+                            korisnik.Lokacija = new Lokacija();
+                            korisnik.Lokacija = kor.Lokacija;
+                        }
+                        else
+                        {
+                            korisnik.Lokacija = new Lokacija();
+                        }
+                    } else if (korisnik.Lokacija.X == 0)
                     {
                         if (kor.Lokacija != null)
                         {

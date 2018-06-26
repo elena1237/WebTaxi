@@ -44,3 +44,4 @@ C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\bin\Antlr3.Runtime.pdb
 C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\obj\Debug\WebAPI.csproj.CoreCompileInputs.cache
 C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\obj\Debug\WebAPI.dll
 C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\obj\Debug\WebAPI.pdb
+C:\Users\user\Desktop\WebTaxi\WebAPI\WebAPI\obj\Debug\WebAPI.csprojResolveAssemblyReference.cache
