@@ -9,3 +9,4 @@
 44250201|Ana|djuro|Dobra|Iskic|Z|0711994105030|065388057|ana@gmail.com|Vozac|0|44,6773015291698|19,71884765625|0|Đokića Mala| Cerovac||44250201|1999|893-F-545|90|Kombi|True|True
 31614998|Ogi|gio|Ognjen|Miletic|Z| 928498234|0652435728|ogi@gmail.com|Vozac|0|42,9733616732154|21,9216064453125|0|Kosmajska| Leskovac||31614998|2000|345-O-982|78|Kombi|True|False
 6642059|Mišo|miso|Miloš|Petković|Z| 021299398343|064345633|miso@gmail.com|Vozac|0|45,0249907410388|19,9330810546875|0|Maršala Tita| Dobrodol 22328||6642059|2004|393-M-344|67|Kombi|True|False
+32459944|Filip|fica|Fipa|Filipović|M| 32423423|432423|faf@gmail.com|Vozac|0|44,3364771312824|20,6252197265625|0|Unnamed Road| Kopljare||32459944|2000|3232|23|Kombi|False|False

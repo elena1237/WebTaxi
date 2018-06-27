@@ -14,58 +14,76 @@
 
 
             $("#prijava").click(function () {
-                let korisnik = {
-                    KorisnickoIme: `${$('#korIme').val()}`,
-                    Lozinka: `${$('#korPass').val()}`,
-                };
+                let k1 = document.getElementById("korIme");
+                let k2 = document.getElementById("korPass");
+                if (!k1.checkValidity() || !k2.checkValidity()) {
+                    alert("Molimo unesite sva polja.");
+                } else {
+
+                    let korisnik = {
+                        KorisnickoIme: `${$('#korIme').val()}`,
+                        Lozinka: `${$('#korPass').val()}`,
+                    };
 
 
-                $.ajax({
-                    type: 'POST',
-                    url: '/api/Login',
-                    data: JSON.stringify(korisnik),
-                    contentType: 'application/json; charset=utf-8',
-                    dataType: 'json',
-                    success: function (data) {
-                        if (data) {
-                            alert('Uspjesno ulogovan korisnik');
-                            localStorage.setItem("logovan", korisnik.KorisnickoIme);
-                            $(location).attr('href', 'HtmlPage1.html');
-                        } else {
-                            alert('Neuspjesno logovanje jer nije registrovan.');
-                        }
-                    },
-                })
+                    $.ajax({
+                        type: 'POST',
+                        url: '/api/Login',
+                        data: JSON.stringify(korisnik),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data) {
+                                alert('Uspjesno ulogovan korisnik');
+                                localStorage.setItem("logovan", korisnik.KorisnickoIme);
+                                $(location).attr('href', 'HtmlPage1.html');
+                            } else {
+                                alert('Neuspjesno logovanje jer nije registrovan.');
+                            }
+                        },
+                    })
+                }
             });
 
             $("#registracija").click(function () {
-                let korisnik = {
-                    KorisnickoIme: `${$('#korImeReg').val()}`,
-                    Lozinka: `${$('#korPassReg').val()}`,
-                    Ime: `${$('#ime').val()}`,
-                    Prezime: `${$('#prezime').val()}`,
-                    Pol: `${$('#pol').val()}`,
-                    JMBG: ` ${$('#jmbg').val()}`,
-                    Email: `${$('#email').val()}`,
-                    KontaktTelefon: `${$('#brTelefona').val()}`,
-                };
+                let k1 = document.getElementById("korImeReg");
+                let k2 = document.getElementById("korPassReg");
+                let k3 = document.getElementById("ime");
+                let k4 = document.getElementById("prezime");
+                let k5 = document.getElementById("jmbg");
+                let k6 = document.getElementById("brTelefona");
+                let k7 = document.getElementById("email");
+                if (!k1.checkValidity() || !k2.checkValidity() || !k3.checkValidity() || !k4.checkValidity() || !k5.checkValidity() || !k6.checkValidity() || !k7.checkValidity()) {
+                    alert("Molimo popunite sva polja na ispravan način.");
+                } else {
+                    let korisnik = {
+                        KorisnickoIme: `${$('#korImeReg').val()}`,
+                        Lozinka: `${$('#korPassReg').val()}`,
+                        Ime: `${$('#ime').val()}`,
+                        Prezime: `${$('#prezime').val()}`,
+                        Pol: `${$('#pol').val()}`,
+                        JMBG: ` ${$('#jmbg').val()}`,
+                        Email: `${$('#email').val()}`,
+                        KontaktTelefon: `${$('#brTelefona').val()}`,
+                    };
 
 
-                $.ajax({
-                    type: 'POST',
-                    url: '/api/Musterija',
-                    data: JSON.stringify(korisnik),
-                    contentType: 'application/json; charset=utf-8',
-                    dataType: 'json',
-                    success: function (data) {
-                        if (data) {
-                            alert('Uspjesno registovana musterija');
-                            $(location).attr('href', 'pocetna.html');
-                        } else {
-                            alert('Vec je registrovan korisnik sa tim korisnickim imenom.');
-                        }
-                    },
-                })
+                    $.ajax({
+                        type: 'POST',
+                        url: '/api/Musterija',
+                        data: JSON.stringify(korisnik),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data) {
+                                alert('Uspjesno registovana musterija');
+                                $(location).attr('href', 'pocetna.html');
+                            } else {
+                                alert('Vec je registrovan korisnik sa tim korisnickim imenom.');
+                            }
+                        },
+                    })
+                }
             });
         });
 
@@ -81,16 +99,23 @@
         
         }
 
-     table,h2,button {
-            margin-left: 130px;  
-         }
+        table, h2, button {
+            margin-left: 130px;
+        }
+         
 
         input[type="text"], input[type="email"], select, input[type="password"], textarea {
-            background-color: transparent;
-            font-weight:bold;
-            
+            background-color: rgba(255, 255, 255, 0.1);
+            font-weight: bold;
+            color: black;
+        }
+        table, button {
+            background-color: rgba(255, 255, 255, 0.5);
         }
 
+
+        
+        
         
 
     </style>
@@ -99,55 +124,55 @@
 
     <div class="w3-card-4">
         <div class="w3-container w3-theme w3-card">
-            <h1><b>Welcome to Yellow TAXI</b></h1>
+            <h1><b>Dobrodošli na Yellow TAXI</b></h1>
      </div>
      </div>
      
 
-        <h2><b>Login</b></h2>
+        <h2><b>Prijava</b></h2>
 
 
         <table border=1>
             <tr>
-                <td><b>Korisnicko ime</b></td>
-                <td><input id="korIme" type="text" name="KorisnickoIme" /></td>
+                <td><b>Korisničko ime</b></td>
+                <td><input id="korIme" type="text" name="KorisnickoIme" required /></td>
             </tr>
             <tr>
                 <td><b>Lozinka</b></td>
-                <td><input id="korPass" type="password" name="Lozinka" /></td>
+                <td><input id="korPass" type="password" name="Lozinka" required /></td>
             </tr>
         </table>
         <button id="prijava" type="button"><b>Prijavi se</b></button>
 
 
 
-        <h2><b>Registration</b></h2>
+        <h2><b>Registracija</b></h2>
 
 
         <table border=1>
             <tr>
-                <td><b>Korisnicko ime</b></td>
-                <td><input id="korImeReg" type="text" name="KorisnickoIme" /></td>
+                <td><b>Korisničko ime</b></td>
+                <td><input id="korImeReg" type="text" pattern="[0-9a-zA-Z]{3,}" placeholder="(min 3 karaktera)" name="KorisnickoIme" required /></td>
             </tr>
             <tr>
                 <td><b>Lozinka</b></td>
-                <td><input id="korPassReg" type="password" name="Lozinka" /></td>
+                <td><input id="korPassReg" type="password" pattern="[0-9a-zA-Z]{5,}" placeholder="(min 5 karaktera)" name="Lozinka" required /></td>
             </tr>
 
             <tr>
                 <td><b>Ime</b></td>
-                <td><input id="ime" type="text" name="Ime" /></td>
+                <td><input id="ime" type="text" name="Ime" required /></td>
             </tr>
 
             <tr>
                 <td><b>Prezime</b></td>
-                <td><input id="prezime" type="text" name="Prezime" /></td>
+                <td><input id="prezime" type="text" name="Prezime" required /></td>
             </tr>
 
 
             <tr>
                 <td><b>JMBG</b></td>
-                <td><input id="jmbg" type="text" name="JMBG" /></td>
+                <td><input id="jmbg" type="text" pattern="[0-9]{13}" placeholder="(13 cifara)" name="JMBG" required /></td>
             </tr>
 
             <tr>
@@ -166,12 +191,12 @@
 
             <tr>
                 <td><b>Broj telefona</b></td>
-                <td><input id="brTelefona" type="text" name="KontaktTelefon" /></td>
+                <td><input id="brTelefona" type="text" name="KontaktTelefon" required /></td>
             </tr>
 
             <tr>
                 <td><b>Email adresa</b></td>
-                <td><input id="email" type="email" name="Email" /></td>
+                <td><input id="email" type="email" name="Email" placeholder="(@gmail.com)" required /></td>
             </tr>
 
         </table>
