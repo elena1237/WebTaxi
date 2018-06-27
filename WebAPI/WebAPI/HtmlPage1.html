@@ -752,53 +752,59 @@
                 $("#PrikazPretrPoDatMust").hide();
                 $("#map").show();
 
-                let dijelovi = fulAdresa.split(",");
-                let x = dijelovi[0];
-                let y = dijelovi[1];
-                let ulicaIbroj = dijelovi[2];
-                let grad = dijelovi[3]; //sa zipom
-
-               
-                let adresaDolazak = {
-                    IdAdr: "",
-                    UlicaIBroj: ulicaIbroj,
-                    NaseljenoMjesto: grad,
-                    PozivniBroj: "",
-                };
-
-                let lokacijaDolazak = {
-                    IdLok: "",
-                    X: x,
-                    Y: y,
-                    Adresa: adresaDolazak,
-                };
+                if (fulAdresa == "") {
+                    alert("Molimo unesite lokaciju.");
+                } else {
 
 
-                let voznja = {
-                    Dolazak: lokacijaDolazak,
-                    TipAutaVoznje: `${$('#tipau').val()}`,
-                    MusterijaVoznja: dataP.KorisnickoIme,
-                    VozacVoznja: null,
-                    Iznos: 0,
-                    DispecerVoznja: null,
-                };
+                    let dijelovi = fulAdresa.split(",");
+                    let x = dijelovi[0];
+                    let y = dijelovi[1];
+                    let ulicaIbroj = dijelovi[2];
+                    let grad = dijelovi[3]; //sa zipom
 
 
-                $.ajax({
-                    type: 'POST',
-                    url: '/api/Voznja',
-                    data: JSON.stringify(voznja),
-                    contentType: 'application/json; charset=utf-8',
-                    dataType: 'json',
-                    success: function (data) {
-                        if (data) {
-                            alert('Uspjesno unesena voznja');             //////////////// jel treba localstorage
-                            $(location).attr('href', 'HtmlPage1.html');
-                        } else {
-                            alert('Vec je drugi taxista na toj lokaciji.');
-                        }
-                    },
-                })
+                    let adresaDolazak = {
+                        IdAdr: "",
+                        UlicaIBroj: ulicaIbroj,
+                        NaseljenoMjesto: grad,
+                        PozivniBroj: "",
+                    };
+
+                    let lokacijaDolazak = {
+                        IdLok: "",
+                        X: x,
+                        Y: y,
+                        Adresa: adresaDolazak,
+                    };
+
+
+                    let voznja = {
+                        Dolazak: lokacijaDolazak,
+                        TipAutaVoznje: `${$('#tipau').val()}`,
+                        MusterijaVoznja: dataP.KorisnickoIme,
+                        VozacVoznja: null,
+                        Iznos: 0,
+                        DispecerVoznja: null,
+                    };
+
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/api/Voznja',
+                        data: JSON.stringify(voznja),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data) {
+                                alert('Uspjesno unesena voznja');             //////////////// jel treba localstorage
+                                $(location).attr('href', 'HtmlPage1.html');
+                            } else {
+                                alert('Vec je drugi taxista na toj lokaciji.');
+                            }
+                        },
+                    })
+                }
             });
 
 
@@ -867,54 +873,59 @@
                 $("#DodavanjeVoznjeDispecer").show();
                 $("#map").show();
 
-                let dijelovi = fulAdresa.split(",");
-                let x = dijelovi[0];
-                let y = dijelovi[1];
-                let ulicaIbroj = dijelovi[2];
-                let grad = dijelovi[3]; //sa zipom
+                if (fulAdresa == "") {
+                    alert("Molimo unesite lokaciju.");
+                } else {
 
-                let adresaDolazak = {
-                    IdAdr: "",
-                    UlicaIBroj: ulicaIbroj,
-                    NaseljenoMjesto: grad,
-                    PozivniBroj: "",
-                };
+                    let dijelovi = fulAdresa.split(",");
+                    let x = dijelovi[0];
+                    let y = dijelovi[1];
+                    let ulicaIbroj = dijelovi[2];
+                    let grad = dijelovi[3]; //sa zipom
 
-                let lokacijaDolazak = {
-                    IdLok: "",
-                    X: x,
-                    Y: y,
-                    Adresa: adresaDolazak,
-                };
+                    let adresaDolazak = {
+                        IdAdr: "",
+                        UlicaIBroj: ulicaIbroj,
+                        NaseljenoMjesto: grad,
+                        PozivniBroj: "",
+                    };
 
-
-
-
-                let voznja = {
-                    Dolazak: lokacijaDolazak,
-                    TipAutaVoznje: `${$('#tipauDisp').val()}`,
-                    MusterijaVoznja: null,
-                    VozacVoznja: `${$('#vozac').val()}`,
-                    Iznos: 0,
-                    DispecerVoznja: dataP.KorisnickoIme,
-                };
+                    let lokacijaDolazak = {
+                        IdLok: "",
+                        X: x,
+                        Y: y,
+                        Adresa: adresaDolazak,
+                    };
 
 
-                $.ajax({
-                    type: 'POST',
-                    url: '/api/Voznja',
-                    data: JSON.stringify(voznja),
-                    contentType: 'application/json; charset=utf-8',
-                    dataType: 'json',
-                    success: function (data) {
-                        if (data) {
-                            alert('Uspjesno unesena voznja');             //////////////// jel treba localstorage
-                            $(location).attr('href', 'HtmlPage1.html');
-                        } else {
-                            alert('Vec je drugi taxista na toj lokaciji.');
-                        }
-                    },
-                })
+
+
+                    let voznja = {
+                        Dolazak: lokacijaDolazak,
+                        TipAutaVoznje: `${$('#tipauDisp').val()}`,
+                        MusterijaVoznja: null,
+                        VozacVoznja: `${$('#vozac').val()}`,
+                        Iznos: 0,
+                        DispecerVoznja: dataP.KorisnickoIme,
+                    };
+
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/api/Voznja',
+                        data: JSON.stringify(voznja),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data) {
+                                alert('Uspjesno unesena voznja');             //////////////// jel treba localstorage
+                                $(location).attr('href', 'HtmlPage1.html');
+                            } else {
+                                alert('Vec je drugi taxista na toj lokaciji.');
+                            }
+                        },
+                    })
+                }
             });
 
 
