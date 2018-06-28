@@ -135,11 +135,11 @@
         <table border=1>
             <tr>
                 <td><b>Korisničko ime</b></td>
-                <td><input id="korIme" type="text" name="KorisnickoIme" required /></td>
+                <td><input id="korIme" type="text" pattern="[0-9a-zA-Z]{3,}" name="KorisnickoIme" required /></td>
             </tr>
             <tr>
                 <td><b>Lozinka</b></td>
-                <td><input id="korPass" type="password" name="Lozinka" required /></td>
+                <td><input id="korPass" type="password" pattern="[0-9a-zA-Z]{4,}" name="Lozinka" required /></td>
             </tr>
         </table>
         <button id="prijava" type="button"><b>Prijavi se</b></button>
@@ -156,17 +156,17 @@
             </tr>
             <tr>
                 <td><b>Lozinka</b></td>
-                <td><input id="korPassReg" type="password" pattern="[0-9a-zA-Z]{5,}" placeholder="(min 5 karaktera)" name="Lozinka" required /></td>
+                <td><input id="korPassReg" type="password" pattern="[0-9a-zA-Z]{4,}" placeholder="(min 4 karaktera)" name="Lozinka" required /></td>
             </tr>
 
             <tr>
                 <td><b>Ime</b></td>
-                <td><input id="ime" type="text" name="Ime" required /></td>
+                <td><input id="ime" type="text" pattern="[a-zA-Z]{2,}" placeholder="(min 2 karaktera)" name="Ime" required /></td>
             </tr>
 
             <tr>
                 <td><b>Prezime</b></td>
-                <td><input id="prezime" type="text" name="Prezime" required /></td>
+                <td><input id="prezime" type="text"  placeholder="(min 2 karaktera)" name="Prezime" required /></td>
             </tr>
 
 
@@ -191,7 +191,7 @@
 
             <tr>
                 <td><b>Broj telefona</b></td>
-                <td><input id="brTelefona" type="text" name="KontaktTelefon" required /></td>
+                <td><input id="brTelefona" type="text" name="KontaktTelefon" placeholder="(6-14 cifara)" pattern="[0-9]{6,14}" required /></td>
             </tr>
 
             <tr>

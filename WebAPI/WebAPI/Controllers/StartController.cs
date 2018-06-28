@@ -10,7 +10,7 @@ namespace WebAPI.Controllers
 {
     public class StartController : ApiController
     {
-        public Korisnik Post([FromBody]string vrednost)
+        public Korisnik Post([FromBody]string vrednost)  //da provjeri ko je ulogovan
         {
  
             foreach (var k in Musterije.musterije.Values)

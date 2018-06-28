@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Web.Hosting;
 using System.Web.Http;
 using WebAPI.Models;
@@ -95,6 +96,30 @@ namespace WebAPI.Controllers
         // POST api/musterija
         public bool Post([FromBody]Musterija korisnik)
         {
+            
+            if (String.IsNullOrEmpty(korisnik.KorisnickoIme) || String.IsNullOrEmpty(korisnik.Lozinka) ||
+              String.IsNullOrEmpty(korisnik.Ime) || String.IsNullOrEmpty(korisnik.Prezime) ||
+              String.IsNullOrEmpty((korisnik.Pol).ToString()) || String.IsNullOrEmpty(korisnik.JMBG) ||
+              String.IsNullOrEmpty(korisnik.KontaktTelefon) || String.IsNullOrEmpty(korisnik.Email))
+            {
+                return false;
+            }
+
+
+            Regex r1 = new Regex("[0-9a-zA-Z]{3,}"); //korisnicko ime 
+            Regex r2 = new Regex("[0-9a-zA-Z]{4,}");//lozinka
+            Regex r3 = new Regex("[0-9]{13}");//jmbg
+            Regex r4 = new Regex("[0-9]{6,14}");//kontakt
+            Regex r5 = new Regex("[a-zA-Z]{2,}");//ime i prezime
+            
+
+
+            if (!r1.IsMatch(korisnik.KorisnickoIme) || !r2.IsMatch(korisnik.Lozinka) || !r3.IsMatch(korisnik.JMBG) || !r4.IsMatch(korisnik.KontaktTelefon) || !r5.IsMatch(korisnik.Ime))
+            {
+                return false;
+            }
+
+
 
             foreach (Musterija kor in Musterije.musterije.Values)
             {
@@ -137,7 +162,7 @@ namespace WebAPI.Controllers
             FileStream stream = new FileStream(path, FileMode.Append);
             using (StreamWriter tw = new StreamWriter(stream))
             {
-                string upis = k.Id.ToString() + '|' + k.KorisnickoIme + '|' + k.Lozinka + '|' + k.Ime + '|' + k.Prezime + '|' + k.Pol + '|' + k.JMBG + '|' + k.KontaktTelefon + '|' + k.Email + '|' + k.Uloga + '|' + k.Banovan.ToString();
+                string upis = k.Id.ToString() + '|' + k.KorisnickoIme + '|' + k.Lozinka + '|' + k.Ime + '|' + k.Prezime + '|' + k.Pol + '|' + k.JMBG + '|' + k.KontaktTelefon + '|' + k.Email + '|' + k.Uloga + '|' + k.Banovan.ToString() + '\n';
                 tw.WriteLine(upis);
             }
             stream.Close();
